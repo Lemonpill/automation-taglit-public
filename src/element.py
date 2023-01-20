@@ -198,4 +198,10 @@ class BtnFormsChooseTrip(BasePageElement):
     locator = (By.CSS_SELECTOR, "button[data-qa-id='action-GetStarted-button']")
 
 
+class BtnHomeCloseLightbox(BasePageElement):
+    """ Home page lightbox 'X' icon """
+
+    locator = (By.CSS_SELECTOR, "#app > div > div.generalPopupWrapper.popup_container > div > div > span")
+
+
 # TODO: CREATE FORMS SUCCESS SIGNUP LOCATOR FOR CA

@@ -5,6 +5,7 @@ from src.pages.basepage import BasePage
 from src.config import Config as cfg
 from src.element import (
     BtnHomeCookiesCTA,
+    BtnHomeCloseLightbox,
     BtnHomeNavbarLogin,
     BtnHomeSignupTab,
     BtnHomeLoginTab,
@@ -48,6 +49,7 @@ class HomepageUS(BasePage):
 
         # Elements
         self.btn_cookies_cta = BtnHomeCookiesCTA(self)
+        self.btn_close_lightbox = BtnHomeCloseLightbox(self)
         self.btn_navbar_login = BtnHomeNavbarLogin(self)
         self.btn_signup_tab = BtnHomeSignupTab(self)
         self.btn_login_tab = BtnHomeLoginTab(self)
@@ -85,6 +87,12 @@ class HomepageUS(BasePage):
             self.btn_cookies_cta.see_and_click()
         except Exception:
             raise Exception("failed to click cookies cta")
+
+    def close_lightbox(self):
+        try:
+            self.btn_close_lightbox.see_and_click()
+        except Exception:
+            raise Exception("failed to close lightbox")
 
     def open_login_popup(self):
         try:

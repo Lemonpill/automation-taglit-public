@@ -73,6 +73,20 @@ class USHomeSignupChrome(unittest.TestCase):
         self.reporter.write(step_n, step)
 
 
+        # Close lightbox
+        step_n += 1
+        step = "close lightbox"
+
+        try:
+            self.page.close_lightbox()
+        except Exception:
+            self.reporter.write(step_n, step, ok=False)
+            self.fail(f"failed to {step}")
+
+        time.sleep(cfg.SCREENSHOT_WAIT)
+        self.reporter.write(step_n, step)
+
+
         # Open login popup
         step_n += 1
         step = "open login modal"
