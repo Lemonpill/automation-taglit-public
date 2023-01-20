@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 class ARHomeLoginChrome(unittest.TestCase):
-    """ Argentina - Homepage - Login with valid email (Chrome) """
+    """Argentina - Homepage - Login with valid email (Chrome)"""
 
     def setUp(self) -> None:
         self.name = "ARHomeLoginChrome"
@@ -47,8 +47,8 @@ class ARHomeLoginChrome(unittest.TestCase):
         self.mailbox = Mailbox(self.test_email)
 
     def get_email_otp(self) -> str:
-        """ Check for OTP code email every 5 seconds\n
-            Returns OTP or fails test case
+        """Check for OTP code email every 5 seconds\n
+        Returns OTP or fails test case
         """
 
         # Limit to 5 attempts
@@ -59,7 +59,7 @@ class ARHomeLoginChrome(unittest.TestCase):
                 continue
 
             last_msg = self.mailbox.get_last_message()
-            
+
             try:
                 # Extract HTML from email
                 tree = html.fromstring(last_msg["htmlBody"])
@@ -73,7 +73,7 @@ class ARHomeLoginChrome(unittest.TestCase):
                 self.fail("failed to extract otp")
 
             if not code.isnumeric():
-                self.fail(f"unexpected otp: {code}") 
+                self.fail(f"unexpected otp: {code}")
 
             return code
 
@@ -99,7 +99,6 @@ class ARHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Verify title
         step_n += 1
         step = "verify title"
@@ -112,7 +111,6 @@ class ARHomeLoginChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Accept cookies
         step_n += 1
@@ -127,7 +125,6 @@ class ARHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Open login popup
         step_n += 1
         step = "open login modal"
@@ -141,7 +138,6 @@ class ARHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Open login tab
         step_n += 1
         step = "open login tab"
@@ -154,7 +150,6 @@ class ARHomeLoginChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Fill login email
         step_n += 1
@@ -172,7 +167,6 @@ class ARHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, email)
 
-
         # Submit login email
         step_n += 1
         step = "submit email login"
@@ -185,7 +179,6 @@ class ARHomeLoginChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Get login OTP
         step_n += 1
@@ -200,7 +193,6 @@ class ARHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, code)
 
-
         # Fill login OTP
         step_n += 1
         step = "fill login otp"
@@ -214,10 +206,8 @@ class ARHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, code)
 
-
         # Landing in registration forms
         reg_forms = RegistrationFormsAR(self.driver)
-
 
         # Verify choose a trip shown
         step_n += 1

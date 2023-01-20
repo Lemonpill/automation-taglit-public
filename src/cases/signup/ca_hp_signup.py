@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 class CAHomeSignupChrome(unittest.TestCase):
-    """ Canada - Homepage - Signup with valid details (Chrome) """
+    """Canada - Homepage - Signup with valid details (Chrome)"""
 
     def setUp(self) -> None:
         self.name = "CAHomeSignupChrome"
@@ -44,7 +44,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Verify title
         step_n += 1
         step = "verify title"
@@ -57,7 +56,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Accept cookies
         step_n += 1
@@ -72,7 +70,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Open login popup
         step_n += 1
         step = "open login modal"
@@ -85,7 +82,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Open signup tab
         step_n += 1
@@ -100,7 +96,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Open email signup
         step_n += 1
         step = "open email signup"
@@ -113,7 +108,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Fill in valid first name
         step_n += 1
@@ -130,7 +124,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, fname)
 
-
         # Fill in valid last name
         step_n += 1
         step = "fill last name"
@@ -145,7 +138,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, lname)
-
 
         # Fill in valid date of birth
         step_n += 1
@@ -162,7 +154,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, bdate)
 
-
         # Generate email from 1secemail
         step_n += 1
         step = "generate email"
@@ -174,7 +165,6 @@ class CAHomeSignupChrome(unittest.TestCase):
             self.fail(f"failed to {step}")
 
         self.reporter.save_step(step_n, step, mailbox.email)
-
 
         # Fill in valid email
         step_n += 1
@@ -191,7 +181,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, email)
 
-
         # Open family relation dropdown
         step_n += 1
         step = "open family relation"
@@ -204,7 +193,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Check father relation
         step_n += 1
@@ -219,7 +207,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Close family relation dropdown
         step_n += 1
         step = "close family relation"
@@ -232,7 +219,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Fill in valid phone
         step_n += 1
@@ -249,7 +235,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, phone)
 
-
         # Submit signup form
         step_n += 1
         step = "submit signup"
@@ -262,7 +247,6 @@ class CAHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Scroll down terms of service
         step_n += 1
@@ -277,7 +261,6 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Accept terms of service
         step_n += 1
         step = "accept terms"
@@ -291,10 +274,8 @@ class CAHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Landing in registration forms
         reg_forms = RegistrationFormsCA(self.driver)
-
 
         # Verify choose a trip shown
         step_n += 1

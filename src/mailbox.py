@@ -12,24 +12,24 @@ BASE_URL = "https://www.1secmail.com/api/v1/"
 
 class API:
     def generate_addresses(n: str) -> List[str]:
-        """ Generating random email addresses
+        """Generating random email addresses
 
-            n:          number of addresses to generate
-            returns:    a list of addresses
+        n:          number of addresses to generate
+        returns:    a list of addresses
 
-            example:
-                [
-                    "514adm2s0c@wwjmp.com",
-                    "9q6fv8wkwr4@wwjmp.com",
-                    "xi9pw5ry@1secmail.com",
-                    "xpni3u25w@1secmail.net",
-                    "pkbds55jep@1secmail.com",
-                    "jeil65xzv8@1secmail.org",
-                    "cg89o9i0thml@1secmail.net",
-                    "0tw2rcoc3id@1secmail.org",
-                    "bdnlnm@1secmail.org",
-                    "p8axfdpf65@wwjmp.com"
-                ]
+        example:
+            [
+                "514adm2s0c@wwjmp.com",
+                "9q6fv8wkwr4@wwjmp.com",
+                "xi9pw5ry@1secmail.com",
+                "xpni3u25w@1secmail.net",
+                "pkbds55jep@1secmail.com",
+                "jeil65xzv8@1secmail.org",
+                "cg89o9i0thml@1secmail.net",
+                "0tw2rcoc3id@1secmail.org",
+                "bdnlnm@1secmail.org",
+                "p8axfdpf65@wwjmp.com"
+            ]
         """
 
         logger.debug(f"API.generate_addresses started: n={n}")
@@ -50,24 +50,24 @@ class API:
             raise Exception("failed to decode json")
 
         logger.debug(f"API.generate_addresses finished")
-        
+
         return data
 
     def get_domain_list(self) -> List[str]:
-        """ List active domains
+        """List active domains
 
-            returns:    a list of domains
-            
-            example:
-                [
-                    "1secmail.com",
-                    "1secmail.org",
-                    "1secmail.net",
-                    "wwjmp.com",
-                    "esiix.com",
-                    "xojxe.com",
-                    "yoggm.com"
-                ]
+        returns:    a list of domains
+
+        example:
+            [
+                "1secmail.com",
+                "1secmail.org",
+                "1secmail.net",
+                "wwjmp.com",
+                "esiix.com",
+                "xojxe.com",
+                "yoggm.com"
+            ]
         """
 
         logger.debug(f"API.get_domain_list started")
@@ -89,23 +89,23 @@ class API:
         return data
 
     def get_mailbox(e: str) -> List[dict]:
-        """ Checking your mailbox
+        """Checking your mailbox
 
-            e:          email address
-            returns:    a list of emails
-            
-            example:
-                [{
-                    "id": 639,
-                    "from": "someone@example.com",
-                    "subject": "Some subject",
-                    "date": "2018-06-08 14:33:55"
-                }, {
-                    "id": 640,
-                    "from": "someoneelse@example.com",
-                    "subject": "Other subject",
-                    "date": "2018-06-08 14:40:55"
-                }]
+        e:          email address
+        returns:    a list of emails
+
+        example:
+            [{
+                "id": 639,
+                "from": "someone@example.com",
+                "subject": "Some subject",
+                "date": "2018-06-08 14:33:55"
+            }, {
+                "id": 640,
+                "from": "someoneelse@example.com",
+                "subject": "Other subject",
+                "date": "2018-06-08 14:40:55"
+            }]
         """
 
         logger.debug(f"API.get_mailbox started: e={e}")
@@ -114,7 +114,7 @@ class API:
             login, domain = e.split("@")
         except ValueError:
             raise Exception("valid email required")
-        
+
         url = BASE_URL + f"?action=getMessages&login={login}&domain={domain}"
 
         try:
@@ -128,31 +128,31 @@ class API:
             raise Exception("failed to decode json")
 
         logger.debug(f"API.get_mailbox finished: data={data}")
-        
+
         return data
 
     def get_message(e: str, msg_id: int) -> dict:
-        """ Fetching single message
+        """Fetching single message
 
-            e:          email address
-            msg_id:     inbox message id
-            returns:    message data
-            
-            example:
-                {
-                    "id": 639,
-                    "from": "someone@example.com",
-                    "subject": "Some subject",
-                    "date": "2018-06-08 14:33:55",
-                    "attachments": [{
-                        "filename": "iometer.pdf",
-                        "contentType": "application\/pdf",
-                        "size": 47412
-                    }],
-                    "body": "Some message body\n\n",
-                    "textBody": "Some message body\n\n",
-                    "htmlBody": ""
-                }
+        e:          email address
+        msg_id:     inbox message id
+        returns:    message data
+
+        example:
+            {
+                "id": 639,
+                "from": "someone@example.com",
+                "subject": "Some subject",
+                "date": "2018-06-08 14:33:55",
+                "attachments": [{
+                    "filename": "iometer.pdf",
+                    "contentType": "application\/pdf",
+                    "size": 47412
+                }],
+                "body": "Some message body\n\n",
+                "textBody": "Some message body\n\n",
+                "htmlBody": ""
+            }
         """
 
         logger.debug(f"API.get_message started: e={e} msg_id={msg_id}")
@@ -164,8 +164,10 @@ class API:
 
         if not type(msg_id) == int:
             raise Exception("n must be an integer")
-        
-        url = BASE_URL + f"?action=readMessage&login={login}&domain={domain}&id={msg_id}"
+
+        url = (
+            BASE_URL + f"?action=readMessage&login={login}&domain={domain}&id={msg_id}"
+        )
 
         try:
             res = requests.get(url)
@@ -181,9 +183,8 @@ class API:
 
         return data
 
-
     def get_attachment(self):
-        """ Attachment download """
+        """Attachment download"""
 
         raise NotImplementedError
 
@@ -202,9 +203,8 @@ class Mailbox(object):
         logger.debug("Mailbox.__init__ finished")
 
     def refresh_messages(self) -> None:
-        """ Refreshes current messages
-        """
-        
+        """Refreshes current messages"""
+
         logger.debug("Mailbox.refresh_messages started")
 
         self.messages = API.get_mailbox(self.email)
@@ -214,9 +214,9 @@ class Mailbox(object):
 
     def get_all_messages(self) -> List[dict]:
 
-        """ Returns all messages
+        """Returns all messages
 
-            returns:    list of messages
+        returns:    list of messages
         """
 
         logger.debug("Mailbox.refresh_messages started")
@@ -228,10 +228,10 @@ class Mailbox(object):
         return messages
 
     def get_single_message(self, msg_id) -> dict:
-        """ Returns single message by ID
+        """Returns single message by ID
 
-            msg_id:     message ID
-            returns:    message object
+        msg_id:     message ID
+        returns:    message object
         """
 
         logger.debug(f"Mailbox.get_single_message started: msg_id={msg_id}")
@@ -242,17 +242,17 @@ class Mailbox(object):
 
         return message
 
-    def get_last_message(self) -> (dict|None):
-        """ Returns last received message
+    def get_last_message(self) -> (dict | None):
+        """Returns last received message
 
-            returns:    message object or None
+        returns:    message object or None
         """
 
         logger.debug(f"Mailbox.get_last_message started")
 
         if not self.messages:
             return None
-        
+
         last_id = self.messages[0]["id"]
 
         message = API.get_message(self.email, last_id)
@@ -262,10 +262,10 @@ class Mailbox(object):
         return message
 
     def has_new_messages(self) -> bool:
-        """ Returns whether new messages
-            were receved
+        """Returns whether new messages
+        were receved
 
-            returns:    bool
+        returns:    bool
         """
 
         logger.debug(f"Mailbox.has_new_messages started")
@@ -285,7 +285,9 @@ class Mailbox(object):
             # Return True if lengths differ
             has_new_messages = True
 
-        logger.debug(f"Mailbox.has_new_messages finished: has_new_messages={has_new_messages}")
+        logger.debug(
+            f"Mailbox.has_new_messages finished: has_new_messages={has_new_messages}"
+        )
 
         # Otherwise return False
         return has_new_messages

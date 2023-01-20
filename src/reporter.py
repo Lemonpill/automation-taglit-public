@@ -13,7 +13,9 @@ logger = logging.getLogger(__name__)
 class Reporter:
     def __init__(self, driver: WebDriver, iso: str, name: str) -> None:
 
-        logger.debug(f"Reporter.__init__ started: driver={driver} | iso={iso} | name={name}")
+        logger.debug(
+            f"Reporter.__init__ started: driver={driver} | iso={iso} | name={name}"
+        )
 
         self.test_driver = driver
         self.test_iso = iso
@@ -26,7 +28,9 @@ class Reporter:
         logger.debug(f"Reporter.__init__: finished")
 
     def save_screenshot(self, stepN: int, step: str, ok=True):
-        logger.debug(f"Reporter.save_screenshot started: stepN={stepN} | step={step} | ok={ok}")
+        logger.debug(
+            f"Reporter.save_screenshot started: stepN={stepN} | step={step} | ok={ok}"
+        )
 
         step = "-".join(step.split(" "))
         img_name = f"{stepN}-{step}"
@@ -41,16 +45,13 @@ class Reporter:
         logger.debug(f"Reporter.save_screenshot: finished")
 
     def save_step(self, stepN: int, step: str, data: str = "", ok=True):
-        logger.debug(f"Reporter.save_step started: stepN={stepN} | step={step} | data={data} | ok={ok}")
+        logger.debug(
+            f"Reporter.save_step started: stepN={stepN} | step={step} | data={data} | ok={ok}"
+        )
 
         with open(self.resultpath, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                str(stepN),
-                step,
-                data,
-                "pass" if ok else "fail"
-            ])
+            writer.writerow([str(stepN), step, data, "pass" if ok else "fail"])
 
         logger.debug(f"Reporter.save_step finished")
 
@@ -61,12 +62,13 @@ class Reporter:
         with open(self.userspath, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([now, self.test_iso, email])
-        
+
         logger.debug(f"Reporter.save_user finished")
 
-
     def write(self, stepN: int, step: str, data: str = "", ok=True):
-        logger.debug(f"Reporter.write started: stepN={stepN} | step={step} | data={data} | ok={ok}")
+        logger.debug(
+            f"Reporter.write started: stepN={stepN} | step={step} | data={data} | ok={ok}"
+        )
 
         self.save_screenshot(stepN, step, ok)
         self.save_step(stepN, step, data, ok)
@@ -79,9 +81,9 @@ class Reporter:
 
         if not self.filepath:
             raise Exception("missing filepath")
-        
+
         self.basepath = self.filepath.parent.parent / "report"
-        
+
         if not os.path.exists(self.basepath):
             os.mkdir(self.basepath)
             logger.info(f"Reporter._create_reports_directory created {self.basepath}")
@@ -102,7 +104,6 @@ class Reporter:
 
         logger.debug("Reporter._create_results_directory finished")
 
-
     def _create_screenshot_directory(self):
         logger.debug("Reporter._create_screenshot_directory started")
 
@@ -110,10 +111,12 @@ class Reporter:
             raise Exception("missing resultdir")
 
         self.imagedir = self.resultdir / "screenshots"
-        
+
         if not os.path.exists(self.imagedir):
             os.mkdir(self.imagedir)
-            logger.info(f"Reporter._create_screenshot_directory created {self.imagedir}")
+            logger.info(
+                f"Reporter._create_screenshot_directory created {self.imagedir}"
+            )
 
         logger.debug("Reporter._create_screenshot_directory finished")
 
@@ -122,7 +125,7 @@ class Reporter:
 
         if not self.resultdir:
             raise Exception("missing resultdir")
-        
+
         self.resultpath = self.resultdir / "result.csv"
         with open(self.resultpath, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)

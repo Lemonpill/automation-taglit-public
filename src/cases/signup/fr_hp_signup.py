@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 class FRHomeSignupChrome(unittest.TestCase):
-    """ France - Homepage - Signup with valid details (Chrome) """
+    """France - Homepage - Signup with valid details (Chrome)"""
 
     def setUp(self) -> None:
         self.name = "FRHomeSignupChrome"
@@ -44,7 +44,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Verify title
         step_n += 1
         step = "verify title"
@@ -57,7 +56,6 @@ class FRHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Accept cookies
         step_n += 1
@@ -72,7 +70,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Open login popup
         step_n += 1
         step = "open login modal"
@@ -85,7 +82,6 @@ class FRHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Open signup tab
         step_n += 1
@@ -100,7 +96,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Open email signup
         step_n += 1
         step = "open email signup"
@@ -113,7 +108,6 @@ class FRHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Fill in valid first name
         step_n += 1
@@ -130,7 +124,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, fname)
 
-
         # Fill in valid last name
         step_n += 1
         step = "fill last name"
@@ -145,7 +138,6 @@ class FRHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, lname)
-
 
         # Fill in valid date of birth
         step_n += 1
@@ -162,7 +154,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, bdate)
 
-
         # Generate email from 1secemail
         step_n += 1
         step = "generate email"
@@ -178,7 +169,7 @@ class FRHomeSignupChrome(unittest.TestCase):
         # Fill in valid email
         step_n += 1
         step = "fill email"
-        
+
         email = mailbox.email
 
         try:
@@ -189,7 +180,6 @@ class FRHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, email)
-
 
         # Fill in gender
         step_n += 1
@@ -206,7 +196,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, gender)
 
-
         # Fill in valid phone
         step_n += 1
         step = "fill phone"
@@ -222,7 +211,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step, phone)
 
-
         # Submit signup form
         step_n += 1
         step = "submit signup"
@@ -235,7 +223,6 @@ class FRHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
-
 
         # Scroll down terms of service
         step_n += 1
@@ -250,7 +237,6 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Accept terms of service
         step_n += 1
         step = "accept terms"
@@ -264,10 +250,8 @@ class FRHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-
         # Landing in registration forms
         reg_forms = RegistrationFormsFR(self.driver)
-
 
         # Verify choose a trip shown
         step_n += 1
