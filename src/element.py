@@ -223,7 +223,7 @@ class BtnFormsChooseTrip(BasePageElement):
     locator = (By.CSS_SELECTOR, "button[data-qa-id='action-GetStarted-button']")
 
 
-class BtnFormsTravelSeasonSection(BasePageElement):
-    """Registration forms 'Travel season' CTA"""
+class ScnFormsTravelSeason(BasePageElement):
+    """Registration forms 'Travel season' section"""
 
     locator = (By.CSS_SELECTOR, "section[data-v-78bcdfad]")

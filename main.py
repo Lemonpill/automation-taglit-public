@@ -7,15 +7,15 @@ from src.suites import hp_signup_login
 
 """
 TODO:
-1. Change verify forms in CA
-2. Add more logging
+    1. Add more logging
+    2. Add webdriver folder in root
 """
 
 
 if __name__ == "__main__":
 
-    currpath = Path(__file__)
-    logpath = currpath.parent / "test.log"
+    filepath = Path(__file__)
+    logpath = filepath.parent / "test.log"
 
     logging.basicConfig(
         filemode="w",

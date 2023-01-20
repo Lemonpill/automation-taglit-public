@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from src.pages.base import BasePage
 from src.element import (
     BtnFormsChooseTrip,
-    BtnFormsTravelSeasonSection
+    ScnFormsTravelSeason
 )
 
 
@@ -12,7 +12,7 @@ class RegistrationFormsCA(BasePage):
         super().__init__(driver)
         # ELEMENTS
         self.btn_choose_trip = BtnFormsChooseTrip(self)
-        self.scn_travel_season = BtnFormsTravelSeasonSection(self)
+        self.scn_travel_season = ScnFormsTravelSeason(self)
 
     def verify_page_loaded(self):
         try:
