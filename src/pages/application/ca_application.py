@@ -1,10 +1,7 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from src.pages.base import BasePage
-from src.element import (
-    BtnFormsChooseTrip,
-    ScnFormsTravelSeason
-)
+from src.element import BtnFormsChooseTrip, ScnFormsTravelSeason
 
 
 class RegistrationFormsCA(BasePage):

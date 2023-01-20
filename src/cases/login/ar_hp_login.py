@@ -156,7 +156,6 @@ class ARHomeLoginChrome(unittest.TestCase):
         step = "fill login email"
 
         email = self.mailbox.email
-        print(f"ar_hp_login: {email}")
 
         try:
             self.page.fill_login_email(email)
