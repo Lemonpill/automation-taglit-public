@@ -232,7 +232,7 @@ class USHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
 
-        logger.info(f"{self.name}.test_valid_login started")
+        logger.info(f"{self.name}.test_valid_login finished")
 
     def tearDown(self) -> None:
         self.driver.quit()

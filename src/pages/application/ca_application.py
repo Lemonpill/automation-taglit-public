@@ -1,7 +1,10 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from src.pages.base import BasePage
-from src.element import BtnFormsChooseTrip
+from src.element import (
+    BtnFormsChooseTrip,
+    BtnFormsTravelSeasonSection
+)
 
 
 class RegistrationFormsCA(BasePage):
@@ -9,9 +12,10 @@ class RegistrationFormsCA(BasePage):
         super().__init__(driver)
         # ELEMENTS
         self.btn_choose_trip = BtnFormsChooseTrip(self)
+        self.scn_travel_season = BtnFormsTravelSeasonSection(self)
 
     def verify_page_loaded(self):
         try:
-            self.btn_choose_trip.locate()
+            self.scn_travel_season.locate()
         except Exception:
             raise Exception("failed to verify page loaded")

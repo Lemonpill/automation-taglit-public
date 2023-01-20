@@ -61,6 +61,15 @@ class BtnHomeCookiesCTA(BasePageElement):
     locator = (By.CSS_SELECTOR, "#app > div.toastWrapper > section > div.primaryButton")
 
 
+class BtnHomeCloseLightbox(BasePageElement):
+    """Home page lightbox 'X' icon"""
+
+    locator = (
+        By.CSS_SELECTOR,
+        "#app > div > div.generalPopupWrapper.popup_container > div > div > span",
+    )
+
+
 class BtnHomeNavbarLogin(BasePageElement):
     """Navigation bar LOGIN button"""
 
@@ -214,13 +223,7 @@ class BtnFormsChooseTrip(BasePageElement):
     locator = (By.CSS_SELECTOR, "button[data-qa-id='action-GetStarted-button']")
 
 
-class BtnHomeCloseLightbox(BasePageElement):
-    """Home page lightbox 'X' icon"""
+class BtnFormsTravelSeasonSection(BasePageElement):
+    """Registration forms 'Travel season' CTA"""
 
-    locator = (
-        By.CSS_SELECTOR,
-        "#app > div > div.generalPopupWrapper.popup_container > div > div > span",
-    )
-
-
-# TODO: CREATE FORMS SUCCESS SIGNUP LOCATOR FOR CA
+    locator = (By.CSS_SELECTOR, "section[data-v-78bcdfad]")
