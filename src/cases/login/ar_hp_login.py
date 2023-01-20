@@ -2,6 +2,7 @@ import os
 import time
 import csv
 import unittest
+import logging
 
 from lxml import html
 from selenium.webdriver.chrome.webdriver import WebDriver
@@ -12,6 +13,9 @@ from src.pages.application.ar_application import RegistrationFormsAR
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 from src.helpers import extract_otp
+
+
+logger = logging.getLogger(__name__)
 
 
 class ARHomeLoginChrome(unittest.TestCase):
@@ -36,6 +40,9 @@ class ARHomeLoginChrome(unittest.TestCase):
                         self.test_email = r["Email"]
         else:
             self.fail("failed to read users file")
+
+        if not self.test_email:
+            self.fail("failed to find test email")
 
         self.mailbox = Mailbox(self.test_email)
 
@@ -73,6 +80,8 @@ class ARHomeLoginChrome(unittest.TestCase):
         self.fail("did not receive otp")
 
     def test_valid_login(self) -> None:
+
+        logger.info(f"{self.name}.test_valid_login started")
 
         self.driver.maximize_window()
         step_n = 0
@@ -222,6 +231,8 @@ class ARHomeLoginChrome(unittest.TestCase):
 
         time.sleep(cfg.SCREENSHOT_WAIT)
         self.reporter.write(step_n, step)
+
+        logger.info(f"{self.name}.test_valid_login finished")
 
     def tearDown(self) -> None:
         self.driver.quit()

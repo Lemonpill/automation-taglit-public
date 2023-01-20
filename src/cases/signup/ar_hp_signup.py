@@ -1,5 +1,6 @@
 import time
 import unittest
+import logging
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 
@@ -8,6 +9,9 @@ from src.pages.homepage.ar_homepage import HomepageAR
 from src.pages.application.ar_application import RegistrationFormsAR
 from src.reporter import Reporter
 from src.mailbox import Mailbox
+
+
+logger = logging.getLogger(__name__)
 
 
 class ARHomeSignupChrome(unittest.TestCase):
@@ -20,7 +24,9 @@ class ARHomeSignupChrome(unittest.TestCase):
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
-    def test_signup(self) -> None:
+    def test_valid_signup(self) -> None:
+
+        logger.info(f"{self.name}.test_valid_signup started")
 
         self.driver.maximize_window()
         step_n = 0
@@ -280,6 +286,8 @@ class ARHomeSignupChrome(unittest.TestCase):
 
         # Save test user
         self.reporter.save_user(email)
+
+        logger.info(f"{self.name}.test_valid_signup finished")
 
     def tearDown(self) -> None:
         self.driver.quit()

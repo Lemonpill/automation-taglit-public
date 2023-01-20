@@ -196,3 +196,6 @@ class BtnFormsChooseTrip(BasePageElement):
     """ Registration forms 'Choose Trip' CTA """
     
     locator = (By.CSS_SELECTOR, "button[data-qa-id='action-GetStarted-button']")
+
+
+# TODO: CREATE FORMS SUCCESS SIGNUP LOCATOR FOR CA

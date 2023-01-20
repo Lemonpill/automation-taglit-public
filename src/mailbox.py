@@ -1,9 +1,11 @@
+import logging
 from datetime import datetime
 from typing import List
 
 import requests
 
 
+logger = logging.getLogger(__name__)
 
 BASE_URL = "https://www.1secmail.com/api/v1/"
 
@@ -30,6 +32,8 @@ class API:
                 ]
         """
 
+        logger.debug(f"API.generate_addresses started: n={n}")
+
         if not type(n) == int:
             raise Exception("n must be an integer")
 
@@ -45,6 +49,8 @@ class API:
         except Exception:
             raise Exception("failed to decode json")
 
+        logger.debug(f"API.generate_addresses finished")
+        
         return data
 
     def get_domain_list(self) -> List[str]:
@@ -64,6 +70,8 @@ class API:
                 ]
         """
 
+        logger.debug(f"API.get_domain_list started")
+
         url = BASE_URL + f"?action=getDomainList"
 
         try:
@@ -75,6 +83,8 @@ class API:
             data = res.json()
         except Exception:
             raise Exception("failed to decode json")
+
+        logger.debug(f"API.get_domain_list finished: data={data}")
 
         return data
 
@@ -98,6 +108,8 @@ class API:
                 }]
         """
 
+        logger.debug(f"API.get_mailbox started: e={e}")
+
         try:
             login, domain = e.split("@")
         except ValueError:
@@ -115,6 +127,8 @@ class API:
         except Exception:
             raise Exception("failed to decode json")
 
+        logger.debug(f"API.get_mailbox finished: data={data}")
+        
         return data
 
     def get_message(e: str, msg_id: int) -> dict:
@@ -141,6 +155,8 @@ class API:
                 }
         """
 
+        logger.debug(f"API.get_message started: e={e} msg_id={msg_id}")
+
         try:
             login, domain = e.split("@")
         except ValueError:
@@ -161,6 +177,8 @@ class API:
         except Exception:
             raise Exception("failed to decode json")
 
+        logger.debug(f"API.get_message finished: data={data}")
+
         return data
 
 
@@ -172,27 +190,42 @@ class API:
 
 class Mailbox(object):
     def __init__(self, email=None) -> None:
+
+        logger.debug(f"Mailbox.__init__ started: email={email}")
+
         if not email:
             email = "qa-" + API.generate_addresses(1)[0]
-
         self.email = email
-        
+
         self.refresh_messages()
+
+        logger.debug("Mailbox.__init__ finished")
 
     def refresh_messages(self) -> None:
         """ Refreshes current messages
         """
+        
+        logger.debug("Mailbox.refresh_messages started")
 
         self.messages = API.get_mailbox(self.email)
         self.last_refresh = datetime.now()
 
+        logger.debug("Mailbox.refresh_messages finished")
+
     def get_all_messages(self) -> List[dict]:
+
         """ Returns all messages
 
             returns:    list of messages
         """
 
-        return self.messages
+        logger.debug("Mailbox.refresh_messages started")
+
+        messages = self.messages
+
+        logger.debug(f"Mailbox.refresh_messages finished: messages={messages}")
+
+        return messages
 
     def get_single_message(self, msg_id) -> dict:
         """ Returns single message by ID
@@ -201,7 +234,13 @@ class Mailbox(object):
             returns:    message object
         """
 
-        return API.get_message(self.email, msg_id)
+        logger.debug(f"Mailbox.get_single_message started: msg_id={msg_id}")
+
+        message = API.get_message(self.email, msg_id)
+
+        logger.debug(f"Mailbox.get_single_message finished: message={message}")
+
+        return message
 
     def get_last_message(self) -> (dict|None):
         """ Returns last received message
@@ -209,12 +248,18 @@ class Mailbox(object):
             returns:    message object or None
         """
 
+        logger.debug(f"Mailbox.get_last_message started")
+
         if not self.messages:
             return None
         
         last_id = self.messages[0]["id"]
 
-        return API.get_message(self.email, last_id)
+        message = API.get_message(self.email, last_id)
+
+        logger.debug(f"Mailbox.get_last_message finished: message={message}")
+
+        return message
 
     def has_new_messages(self) -> bool:
         """ Returns whether new messages
@@ -223,23 +268,24 @@ class Mailbox(object):
             returns:    bool
         """
 
+        logger.debug(f"Mailbox.has_new_messages started")
+
         # Copy old messages
         old_messages = self.get_all_messages()[:]
-        print(f'old: {old_messages}')
 
         # Refresh messages
         self.refresh_messages()
 
         # Copy new messages
         new_messages = self.get_all_messages()[:]
-        print(f'new: {new_messages}')
+        has_new_messages = False
 
         # Compare the length of both
-        if len(old_messages) != len(new_messages):
+        if len(new_messages) > len(old_messages):
             # Return True if lengths differ
-            print("got new messages")
-            return True
+            has_new_messages = True
+
+        logger.debug(f"Mailbox.has_new_messages finished: has_new_messages={has_new_messages}")
 
         # Otherwise return False
-        print("got no new messages")
-        return False
+        return has_new_messages

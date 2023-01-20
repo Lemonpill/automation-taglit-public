@@ -1,5 +1,6 @@
 import time
 import unittest
+import logging
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 
@@ -8,6 +9,9 @@ from src.pages.homepage.su_homepage import HomepageSU
 from src.pages.application.su_application import RegistrationFormsSU
 from src.reporter import Reporter
 from src.mailbox import Mailbox
+
+
+logger = logging.getLogger(__name__)
 
 
 class SUHomeSignupChrome(unittest.TestCase):
@@ -20,7 +24,9 @@ class SUHomeSignupChrome(unittest.TestCase):
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
-    def test_signup(self) -> None:
+    def test_valid_signup(self) -> None:
+
+        logger.info(f"{self.name}.test_valid_signup started")
 
         self.driver.maximize_window()
         step_n = 0
@@ -32,7 +38,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.open()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -46,7 +52,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.verify_title()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -60,7 +66,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.accept_cookies()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -74,7 +80,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.open_login_popup()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -88,7 +94,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.open_signup_tab()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -102,7 +108,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.open_email_signup()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -118,7 +124,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.fill_signup_first_name(fname)
         except Exception:
-            self.reporter.write(step_n, step, fname, False)
+            self.reporter.write(step_n, step, fname, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -134,7 +140,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.fill_signup_last_name(lname)
         except Exception:
-            self.reporter.write(step_n, step, lname, False)
+            self.reporter.write(step_n, step, lname, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -150,7 +156,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.fill_signup_birth_date(bdate)
         except Exception:
-            self.reporter.write(step_n, step, bdate, False)
+            self.reporter.write(step_n, step, bdate, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -164,7 +170,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             mailbox = Mailbox()
         except Exception:
-            self.reporter.save_step(step_n, step, False)
+            self.reporter.save_step(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         self.reporter.save_step(step_n, step, mailbox.email)
@@ -179,7 +185,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.fill_signup_email(email)
         except Exception:
-            self.reporter.write(step_n, step, email, False)
+            self.reporter.write(step_n, step, email, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -195,7 +201,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.fill_signup_gender(gender)
         except Exception:
-            self.reporter.write(step_n, step, gender, False)
+            self.reporter.write(step_n, step, gender, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -211,7 +217,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.fill_signup_phone(phone)
         except Exception:
-            self.reporter.write(step_n, step, phone, False)
+            self.reporter.write(step_n, step, phone, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -225,7 +231,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.submit_signup()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -239,7 +245,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.scroll_terms()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -253,7 +259,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             self.page.accept_terms()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -271,7 +277,7 @@ class SUHomeSignupChrome(unittest.TestCase):
         try:
             reg_forms.verify_page_loaded()
         except Exception:
-            self.reporter.write(step_n, step, False)
+            self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
@@ -279,6 +285,8 @@ class SUHomeSignupChrome(unittest.TestCase):
 
         # Save test user
         self.reporter.save_user(email)
+
+        logger.info(f"{self.name}.test_valid_signup finished")
 
     def tearDown(self) -> None:
         self.driver.quit()

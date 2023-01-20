@@ -5,6 +5,14 @@ from pathlib import Path
 from src.suites import hp_signup_login
 
 
+"""
+TODO:
+1. Add lightbox close in US
+2. Change verify forms in CA
+3. Add more logging
+"""
+
+
 if __name__=="__main__":
 
     currpath = Path(__file__)
@@ -13,7 +21,8 @@ if __name__=="__main__":
     logging.basicConfig(
         filemode="w",
         filename=logpath,
-        level=logging.DEBUG
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(name)s - %(message)s'
     )
 
     runner = unittest.runner.TextTestRunner()
