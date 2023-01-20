@@ -171,7 +171,6 @@ class ARHomeSignupChrome(unittest.TestCase):
         step = "fill email"
 
         email = mailbox.email
-        print(f"ar_hp_signup: {email}")
 
         try:
             self.page.fill_signup_email(email)
@@ -254,9 +253,9 @@ class ARHomeSignupChrome(unittest.TestCase):
         # Landing in registration forms
         reg_forms = RegistrationFormsAR(self.driver)
 
-        # Verify choose a trip shown
+        # Verify regforms loaded
         step_n += 1
-        step = "verify regforms cta"
+        step = "verify regforms loaded"
 
         try:
             reg_forms.verify_page_loaded()

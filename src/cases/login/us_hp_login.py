@@ -168,14 +168,16 @@ class USHomeLoginChrome(unittest.TestCase):
         step_n += 1
         step = "fill login email"
 
+        email = self.mailbox.email
+
         try:
-            self.page.fill_login_email(self.mailbox.email)
+            self.page.fill_login_email(email)
         except Exception:
-            self.reporter.write(step_n, step, ok=False)
+            self.reporter.write(step_n, step, email, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.SCREENSHOT_WAIT)
-        self.reporter.write(step_n, step)
+        self.reporter.write(step_n, step, email)
 
         # Submit login email
         step_n += 1
@@ -219,9 +221,9 @@ class USHomeLoginChrome(unittest.TestCase):
         # Landing in registration forms
         reg_forms = RegistrationFormsUS(self.driver)
 
-        # Verify choose a trip shown
+        # Verify regforms loaded
         step_n += 1
-        step = "verify regforms cta"
+        step = "verify regforms loaded"
 
         try:
             reg_forms.verify_page_loaded()

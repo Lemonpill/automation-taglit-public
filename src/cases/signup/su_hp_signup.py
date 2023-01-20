@@ -253,9 +253,9 @@ class SUHomeSignupChrome(unittest.TestCase):
         # Landing in registration forms
         reg_forms = RegistrationFormsSU(self.driver)
 
-        # Verify choose a trip shown
+        # Verify regforms loaded
         step_n += 1
-        step = "verify regforms cta"
+        step = "verify regforms loaded"
 
         try:
             reg_forms.verify_page_loaded()
