@@ -5,8 +5,8 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages.homepage.su_homepage import HomepageSU
-from src.pages.application.su_application import RegistrationFormsSU
+from src.pages.loginpage.us_loginpage import LoginpageUS
+from src.pages.application.us_application import RegistrationFormsUS
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 from src.helpers import extract_otp, get_email_from_csv, extract_message_text
@@ -15,13 +15,13 @@ from src.helpers import extract_otp, get_email_from_csv, extract_message_text
 logger = logging.getLogger(__name__)
 
 
-class SUHomeLoginChrome(unittest.TestCase):
-    """Russia - Homepage - Login with valid email (Chrome)"""
+class USLoginLoginChrome(unittest.TestCase):
+    """United States - Login page - Login with valid email (Chrome)"""
 
     def setUp(self) -> None:
-        self.name = "SUHomeLoginChrome"
+        self.name = "USLoginLoginChrome"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
-        self.page = HomepageSU(self.driver)
+        self.page = LoginpageUS(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
@@ -41,9 +41,9 @@ class SUHomeLoginChrome(unittest.TestCase):
         self.driver.maximize_window()
         step_n = 0
 
-        # Open homepage
+        # Open login page
         step_n += 1
-        step = "open homepage"
+        step = "open login page"
 
         try:
             self.page.open()
@@ -80,25 +80,12 @@ class SUHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
-        # Open login popup
+        # Select email login
         step_n += 1
-        step = "open login modal"
+        step = "open email login"
 
         try:
-            self.page.open_login_popup()
-        except Exception:
-            self.reporter.write(step_n, step, ok=False)
-            self.fail(f"failed to {step}")
-
-        time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
-
-        # Open login tab
-        step_n += 1
-        step = "open login tab"
-
-        try:
-            self.page.open_login_tab()
+            self.page.open_email_login()
         except Exception:
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
@@ -170,7 +157,7 @@ class SUHomeLoginChrome(unittest.TestCase):
         self.reporter.write(step_n, step, code)
 
         # Landing in registration forms
-        reg_forms = RegistrationFormsSU(self.driver)
+        reg_forms = RegistrationFormsUS(self.driver)
 
         # Verify regforms loaded
         step_n += 1

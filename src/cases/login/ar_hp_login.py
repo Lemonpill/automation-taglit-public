@@ -1,6 +1,4 @@
-import os
 import time
-import csv
 import unittest
 import logging
 

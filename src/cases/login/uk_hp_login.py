@@ -1,10 +1,7 @@
-import os
 import time
-import csv
 import unittest
 import logging
 
-from lxml import html
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
