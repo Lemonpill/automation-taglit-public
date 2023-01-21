@@ -170,7 +170,7 @@ class UKHomeLoginChrome(unittest.TestCase):
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
+        self.reporter.write(step_n, step, code)
 
         # Landing in registration forms
         reg_forms = RegistrationFormsUK(self.driver)
