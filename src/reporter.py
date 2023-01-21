@@ -1,10 +1,11 @@
 import os
 import csv
 import logging
-from pathlib import Path
 from datetime import date
 
 from selenium.webdriver.remote.webdriver import WebDriver
+
+from src.config import Config as cfg
 
 
 logger = logging.getLogger(__name__)
@@ -20,8 +21,6 @@ class Reporter:
         self.test_driver = driver
         self.test_iso = iso
         self.test_name = name
-
-        self.filepath = Path(__file__)
 
         self._create_files()
 
@@ -79,10 +78,7 @@ class Reporter:
     def _create_reports_directory(self):
         logger.debug("Reporter._create_reports_directory started")
 
-        if not self.filepath:
-            raise Exception("missing filepath")
-
-        self.basepath = self.filepath.parent.parent / "report"
+        self.basepath = cfg.REPORTS_PATH
 
         if not os.path.exists(self.basepath):
             os.mkdir(self.basepath)

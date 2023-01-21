@@ -23,7 +23,7 @@ class USHomeLoginChrome(unittest.TestCase):
 
     def setUp(self) -> None:
         self.name = "USHomeLoginChrome"
-        self.driver = WebDriver("C:\BrowserDrivers\chromedriver.exe")
+        self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = HomepageUS(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
@@ -96,7 +96,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Verify title
@@ -109,7 +109,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Accept cookies
@@ -122,7 +122,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Close lightbox
@@ -135,7 +135,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Open login popup
@@ -148,7 +148,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Open login tab
@@ -161,7 +161,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Fill login email
@@ -176,7 +176,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, email, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, email)
 
         # Submit login email
@@ -189,7 +189,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Get login OTP
@@ -202,7 +202,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Fill login OTP
@@ -215,7 +215,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, code, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Landing in registration forms
@@ -231,7 +231,7 @@ class USHomeLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         logger.info(f"{self.name}.test_valid_login finished")

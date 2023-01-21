@@ -19,7 +19,7 @@ class USHomeSignupChrome(unittest.TestCase):
 
     def setUp(self) -> None:
         self.name = "USHomeSignupChrome"
-        self.driver = WebDriver("C:\BrowserDrivers\chromedriver.exe")
+        self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = HomepageUS(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
@@ -41,7 +41,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Verify title
@@ -54,7 +54,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Accept cookies
@@ -67,7 +67,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Close lightbox
@@ -80,7 +80,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Open login popup
@@ -93,7 +93,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Open signup tab
@@ -106,7 +106,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Open email signup
@@ -119,7 +119,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Fill in valid first name
@@ -134,7 +134,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, fname, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, fname)
 
         # Fill in valid last name
@@ -149,7 +149,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, lname, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, lname)
 
         # Fill in valid date of birth
@@ -164,7 +164,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, bdate, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, bdate)
 
         # Generate email from 1secemail
@@ -177,7 +177,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.save_step(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.save_step(step_n, step, mailbox.email)
 
         # Fill in valid email
@@ -192,7 +192,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, email, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, email)
 
         # Open family relation dropdown
@@ -205,7 +205,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Check father relation
@@ -218,7 +218,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Close family relation dropdown
@@ -231,7 +231,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Fill in valid phone
@@ -246,7 +246,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, phone, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, phone)
 
         # Submit signup form
@@ -259,7 +259,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Scroll down terms of service
@@ -272,7 +272,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Accept terms of service
@@ -285,7 +285,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Landing in registration forms
@@ -301,7 +301,7 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.SCREENSHOT_WAIT)
+        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
         # Save test user
