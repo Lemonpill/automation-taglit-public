@@ -1,6 +1,11 @@
 import os
+import time
 import re
 import csv
+
+from lxml import html
+
+from src.mailbox import Mailbox
 
 
 def extract_otp(s):
@@ -32,3 +37,21 @@ def get_email_from_csv(path, iso):
         for r in reader:
             if r["Country"] == iso:
                 return r["Email"]
+
+
+def extract_message_text(msg: dict):
+    """Extract text content from Mailbox message
+
+    Args:
+        msg: message object
+    Returns:
+        str: message text
+    """
+
+    try:
+        # Extract HTML from message
+        tree = html.fromstring(msg["htmlBody"])
+        # Extract text content from HTML
+        return tree.text_content()
+    except Exception:
+        raise Exception("failed to extract text")

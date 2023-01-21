@@ -12,7 +12,7 @@ from src.pages.homepage.su_homepage import HomepageSU
 from src.pages.application.su_application import RegistrationFormsSU
 from src.reporter import Reporter
 from src.mailbox import Mailbox
-from src.helpers import extract_otp, get_email_from_csv
+from src.helpers import extract_otp, get_email_from_csv, extract_message_text
 
 
 logger = logging.getLogger(__name__)
@@ -27,9 +27,7 @@ class SUHomeLoginChrome(unittest.TestCase):
         self.page = HomepageSU(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
-        self.get_mailbox()
 
-    def get_mailbox(self) -> None:
         self.test_email = get_email_from_csv(
             path=self.reporter.userspath,
             iso=self.page.iso
@@ -39,39 +37,6 @@ class SUHomeLoginChrome(unittest.TestCase):
             self.fail("failed to get test email")
 
         self.mailbox = Mailbox(self.test_email)
-
-    def get_email_otp(self) -> str:
-        """Check for OTP code email every 5 seconds\n
-        Returns OTP or fails test case
-        """
-
-        # Limit to 5 attempts
-        for _ in range(5):
-
-            if not self.mailbox.has_new_messages():
-                time.sleep(5)
-                continue
-
-            last_msg = self.mailbox.get_last_message()
-
-            try:
-                # Extract HTML from email
-                tree = html.fromstring(last_msg["htmlBody"])
-
-                # Extract text content from HTML
-                text = tree.text_content()
-
-                # Extract OTP from text content
-                code = extract_otp(text)
-            except Exception:
-                self.fail("failed to extract otp")
-
-            if not code.isnumeric():
-                self.fail(f"unexpected otp: {code}")
-
-            return code
-
-        self.fail("did not receive otp")
 
     def test_valid_login(self) -> None:
 
@@ -177,14 +142,23 @@ class SUHomeLoginChrome(unittest.TestCase):
         step_n += 1
         step = "get login otp"
 
+        message = None
+
+        # Check for new messages every 5 seconds
+        for _ in range(5):
+            if self.mailbox.has_new_messages():
+                message = self.mailbox.get_last_message()
+                break
+            time.sleep(5)
+
         try:
-            code = self.get_email_otp()
+            # Extract message text
+            text = extract_message_text(message)
+            # Extract 5 digit code from text
+            code = extract_otp(text)
         except Exception:
             self.reporter.write(step_n, step, ok=False)
-            self.fail(f"failed to {step}")
-
-        time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
+            self.fail(f"failed to extract otp")
 
         # Fill login OTP
         step_n += 1
