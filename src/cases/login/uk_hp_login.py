@@ -29,8 +29,7 @@ class UKHomeLoginChrome(unittest.TestCase):
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
         self.test_email = get_email_from_csv(
-            path=self.reporter.userspath,
-            iso=self.page.iso
+            path=self.reporter.userspath, iso=self.page.iso
         )
 
         if not self.test_email:

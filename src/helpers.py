@@ -23,15 +23,15 @@ def extract_otp(s):
 def get_email_from_csv(path, iso):
     """Get test email from users file
 
-        Args:
-            path - path to .csv file
-        Returns:
-            email or None
+    Args:
+        path - path to .csv file
+    Returns:
+        email or None
     """
 
     if not os.path.exists(path):
         return None
-    
+
     with open(path, "r", newline="") as f:
         reader = csv.DictReader(f)
         for r in reader:

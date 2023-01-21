@@ -5,7 +5,7 @@ from pathlib import Path
 from src.suites import (
     # valid_hp_signup,
     # valid_hp_login,
-    valid_hp_signup_login
+    valid_hp_signup_login,
 )
 
 
