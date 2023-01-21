@@ -90,7 +90,7 @@ class USLoginLoginChrome(unittest.TestCase):
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.ANIMATION_DELAY)
+        time.sleep(cfg.ANIMATION_DELAY )
         self.reporter.write(step_n, step)
 
         # Fill login email

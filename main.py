@@ -6,6 +6,7 @@ from src.suites import (
     # valid_hp_signup,
     # valid_hp_login,
     valid_hp_signup_login,
+    valid_lp_signup_login,
 )
 
 
@@ -29,4 +30,4 @@ if __name__ == "__main__":
     )
 
     runner = unittest.runner.TextTestRunner()
-    runner.run(valid_hp_signup_login)
+    runner.run(valid_lp_signup_login)
