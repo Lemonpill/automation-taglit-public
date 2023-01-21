@@ -65,7 +65,7 @@ valid_hp_login = unittest.TestSuite(
     ]
 )
 
-# Signup and login from critical countries
+# Signup and login from homepage
 valid_hp_signup_login = unittest.TestSuite(
     [
         valid_us_hp_signup,
