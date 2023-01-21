@@ -12,7 +12,7 @@ from src.pages.homepage.de_homepage import HomepageDE
 from src.pages.application.de_application import RegistrationFormsDE
 from src.reporter import Reporter
 from src.mailbox import Mailbox
-from src.helpers import extract_otp
+from src.helpers import extract_otp, get_email_from_csv
 
 
 logger = logging.getLogger(__name__)
@@ -30,19 +30,13 @@ class DEHomeLoginChrome(unittest.TestCase):
         self.get_mailbox()
 
     def get_mailbox(self) -> None:
-        self.test_email = None
-
-        if os.path.exists(self.reporter.userspath):
-            with open(self.reporter.userspath, "r", newline="") as f:
-                reader = csv.DictReader(f)
-                for r in reader:
-                    if r["Country"] == self.page.iso:
-                        self.test_email = r["Email"]
-        else:
-            self.fail("failed to read users file")
+        self.test_email = get_email_from_csv(
+            path=self.reporter.userspath,
+            iso=self.page.iso
+        )
 
         if not self.test_email:
-            self.fail("failed to find test email")
+            self.fail("failed to get test email")
 
         self.mailbox = Mailbox(self.test_email)
 
