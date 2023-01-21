@@ -1,14 +1,14 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from src.pages.base import BasePage
-from src.element import BtnFormsChooseTrip
+from src.elements.application import ChooseTripButton
 
 
 class RegistrationFormsAR(BasePage):
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
         # ELEMENTS
-        self.btn_choose_trip = BtnFormsChooseTrip(self)
+        self.btn_choose_trip = ChooseTripButton(self)
 
     def verify_page_loaded(self):
         try:

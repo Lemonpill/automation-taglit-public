@@ -1,27 +1,26 @@
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support import expected_conditions as EC
 
 from src.pages.base import BasePage
 from src.config import Config as cfg
-from src.element import (
-    BtnHomeCookiesCTA,
-    BtnHomeNavbarLogin,
-    BtnHomeSignupTab,
-    BtnHomeLoginTab,
-    BtnHomeEmailSignup,
-    BtnHomeEmailLogin,
-    FldHomeLoginEmail,
-    BtnHomeLoginSubmitEmail,
-    FldHomeLoginOTP,
-    FldHomeSignupFirstName,
-    FldHomeSignupLastName,
-    FldHomeSignupBirthDate,
-    FldHomeSignupEmail,
-    FldHomeSignupGender,
-    FldHomeSignupPhone,
-    BtnHomeSignupButton,
-    BtnHomeSignupScrollTerms,
-    BtnHomeSignupAcceptTerms,
+from src.elements.homepage import (
+    CookiesAcceptButton,
+    NavbarLoginButton,
+    SignupTabButton,
+    LoginTabButton,
+    EmailSignupButton,
+    EmailLoginButton,
+    LoginEmailField,
+    LoginSubmitButton,
+    LoginOTPField,
+    SignupFirstNameField,
+    SignupLastNameField,
+    SignupBirthDateField,
+    SignupEmailField,
+    SignupGenderSelection,
+    SignupPhoneField,
+    SignupSubmitButton,
+    ScrollDownTermsButton,
+    AcceptTermsButton,
 )
 
 
@@ -45,24 +44,24 @@ class HomepageDE(BasePage):
         self.title = "Taglit - Birthright Israel"
 
         # Elements
-        self.btn_cookies_cta = BtnHomeCookiesCTA(self)
-        self.btn_navbar_login = BtnHomeNavbarLogin(self)
-        self.btn_signup_tab = BtnHomeSignupTab(self)
-        self.btn_login_tab = BtnHomeLoginTab(self)
-        self.btn_email_signup = BtnHomeEmailSignup(self)
-        self.btn_email_login = BtnHomeEmailLogin(self)
-        self.fld_login_email = FldHomeLoginEmail(self)
-        self.btn_login_submit = BtnHomeLoginSubmitEmail(self)
-        self.fld_login_otp = FldHomeLoginOTP(self)
-        self.fld_signup_fname = FldHomeSignupFirstName(self)
-        self.fld_signup_lname = FldHomeSignupLastName(self)
-        self.fld_signup_birth_date = FldHomeSignupBirthDate(self)
-        self.fld_signup_email = FldHomeSignupEmail(self)
-        self.fld_signup_gender = FldHomeSignupGender(self)
-        self.fld_signup_phone = FldHomeSignupPhone(self)
-        self.btn_signup_button = BtnHomeSignupButton(self)
-        self.btn_signup_scroll_terms = BtnHomeSignupScrollTerms(self)
-        self.btn_signup_accept_terms = BtnHomeSignupAcceptTerms(self)
+        self.btn_cookies_cta = CookiesAcceptButton(self)
+        self.btn_navbar_login = NavbarLoginButton(self)
+        self.btn_signup_tab = SignupTabButton(self)
+        self.btn_login_tab = LoginTabButton(self)
+        self.btn_email_signup = EmailSignupButton(self)
+        self.btn_email_login = EmailLoginButton(self)
+        self.fld_login_email = LoginEmailField(self)
+        self.btn_login_submit = LoginSubmitButton(self)
+        self.fld_login_otp = LoginOTPField(self)
+        self.fld_signup_fname = SignupFirstNameField(self)
+        self.fld_signup_lname = SignupLastNameField(self)
+        self.fld_signup_birth_date = SignupBirthDateField(self)
+        self.fld_signup_email = SignupEmailField(self)
+        self.fld_signup_gender = SignupGenderSelection(self)
+        self.fld_signup_phone = SignupPhoneField(self)
+        self.btn_signup_button = SignupSubmitButton(self)
+        self.btn_signup_scroll_terms = ScrollDownTermsButton(self)
+        self.btn_signup_accept_terms = AcceptTermsButton(self)
 
     def open(self):
         try:
