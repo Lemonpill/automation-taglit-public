@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from src.elements.base import BasePageElement
+from src.elements.base_element import BasePageElement
 
 
 class ChooseTripButton(BasePageElement):
