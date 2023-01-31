@@ -5,8 +5,10 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages.france.homepage import Homepage
-from src.pages.france.application import Application
+from src.pages import (
+    FranceHomepage as Homepage,
+    BaseApplication as Application
+)
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 from src.helpers import extract_otp, get_email_from_csv, extract_message_text
@@ -170,14 +172,14 @@ class FRHomeLoginChrome(unittest.TestCase):
         self.reporter.write(step_n, step, code)
 
         # Landing in registration forms
-        reg_forms = Application(self.driver)
+        application = Application(self.driver)
 
         # Verify regforms loaded
         step_n += 1
         step = "verify regforms loaded"
 
         try:
-            reg_forms.verify_page_loaded()
+            application.verify_page_loaded()
         except Exception:
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")

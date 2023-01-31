@@ -4,6 +4,7 @@ from src.pages.base_page import BasePage
 from src.config import Config as cfg
 from src.elements.homepage import (
     CookiesAcceptButton,
+    CloseLightboxButton,
     NavbarLoginButton,
     SignupTabButton,
     LoginTabButton,
@@ -16,6 +17,7 @@ from src.elements.homepage import (
     SignupLastNameField,
     SignupBirthDateField,
     SignupEmailField,
+    SignupGenderSelection,
     SignupFamilyRelField,
     SignupFatherOption,
     SignupPhoneField,
@@ -25,28 +27,16 @@ from src.elements.homepage import (
 )
 
 
-class Homepage(BasePage):
-    """Class containing actions available
-    on Canada homepage
+class BaseHomepage(BasePage):
+    """Abstract class containing actions available
+    across home pages in all countries
     """
 
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
-
-        # URL
-        if cfg.ENVIRONMENT == "PROD":
-            self.base_url = "http://www.birthrightisrael.com/?country=2"
-        else:
-            self.base_url = "http://www.taglit.info/?country=2"
-
-        # Country
-        self.iso = "CA"
-
-        # Title
-        self.title = "A Free Trip to Israel | Taglit - Birthright Israel"
-
         # Elements
         self.btn_cookies_cta = CookiesAcceptButton(driver)
+        self.btn_close_lightbox = CloseLightboxButton(driver)
         self.btn_navbar_login = NavbarLoginButton(driver)
         self.btn_signup_tab = SignupTabButton(driver)
         self.btn_login_tab = LoginTabButton(driver)
@@ -59,6 +49,7 @@ class Homepage(BasePage):
         self.fld_signup_lname = SignupLastNameField(driver)
         self.fld_signup_birth_date = SignupBirthDateField(driver)
         self.fld_signup_email = SignupEmailField(driver)
+        self.fld_signup_gender = SignupGenderSelection(driver)
         self.fld_family_rel = SignupFamilyRelField(driver)
         self.rad_family_rel_father = SignupFatherOption(driver)
         self.fld_signup_phone = SignupPhoneField(driver)
@@ -83,6 +74,12 @@ class Homepage(BasePage):
             self.btn_cookies_cta.click()
         except Exception:
             raise Exception("failed to click cookies cta")
+
+    def close_lightbox(self):
+        try:
+            self.btn_close_lightbox.click()
+        except Exception:
+            raise Exception("failed to close lightbox")
 
     def open_login_popup(self):
         try:
@@ -156,6 +153,12 @@ class Homepage(BasePage):
         except Exception:
             raise Exception("failed to fill signup email")
 
+    def fill_signup_gender(self, value):
+        try:
+            self.fld_signup_gender.select(value)
+        except Exception:
+            raise Exception("failed to fill signup gender")
+
     def toggle_family_relation(self):
         try:
             self.fld_family_rel.click()
@@ -191,3 +194,129 @@ class Homepage(BasePage):
             self.btn_signup_accept_terms.click()
         except Exception:
             raise Exception("failed to accept terms of service")
+
+
+class UnitedStatesHomepage(BaseHomepage):
+    """
+    Homepage - United States
+    """
+
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "http://www.birthrightisrael.com/"
+    else:
+        base_url = "http://www.taglit.info/"
+
+    # Page country code
+    iso = "US"
+
+    # Page title
+    title = "A Free Trip to Israel | Taglit - Birthright Israel"
+
+
+class UnitedKingdomHomepage(BaseHomepage):
+    """
+    Homepage - United Kingdom
+    """
+    
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "https://int.birthrightisrael.com/?country=3"
+    else:
+        base_url = "https://int.taglit.info/?country=3"
+
+    # Page country code
+    iso = "UK"
+
+    # Page title
+    title = "A Free Trip to Israel | Taglit - Birthright Israel"
+
+
+class RussiaHomepage(BaseHomepage):
+    """
+    Homepage - Russia
+    """
+    
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "https://su.birthrightisrael.com"
+    else:
+        base_url = "https://su.taglit.info"
+
+    # Page country code
+    iso = "SU"
+
+    # Page title
+    title = "Таглит"
+
+
+class GermanyHomepage(BaseHomepage):
+    """
+    Homepage - Germany
+    """
+    
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "https://de.birthrightisrael.com"
+    else:
+        base_url = "https://de.taglit.info"
+
+    # Page country
+    iso = "DE"
+
+    # Page title
+    title = "Taglit - Birthright Israel"
+
+
+class FranceHomepage(BaseHomepage):
+    """
+    Homepage - France
+    """
+    
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "http://fr.birthrightisrael.com/"
+    else:
+        base_url = "http://fr.taglit.info/"
+
+    # Page country
+    iso = "FR"
+
+    # Page title
+    title = "Taglit | Un voyage offert en Israël"
+
+
+class CanadaHomepage(BaseHomepage):
+    """
+    Homepage - Canada
+    """
+    
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "http://www.birthrightisrael.com/?country=2"
+    else:
+        base_url = "http://www.taglit.info/?country=2"
+
+    # Page country
+    iso = "CA"
+
+    # Page title
+    title = "A Free Trip to Israel | Taglit - Birthright Israel"
+
+
+class ArgentinaHomepage(BaseHomepage):
+    """
+    Homepage - Argentina
+    """
+    
+    # Page URL
+    if cfg.ENVIRONMENT == "PROD":
+        base_url = "https://esp.birthrightisrael.com/?country=10"
+    else:
+        base_url = "https://esp.taglit.info/?country=10"
+
+    # Page country
+    iso = "AR"
+
+    # Page title
+    title = "Taglit- Birthright Israel"

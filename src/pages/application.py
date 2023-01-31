@@ -4,7 +4,7 @@ from src.pages.base_page import BasePage
 from src.elements.application import ChooseTripButton, TravelSeasonSection
 
 
-class Application(BasePage):
+class BaseApplication(BasePage):
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
         # ELEMENTS
