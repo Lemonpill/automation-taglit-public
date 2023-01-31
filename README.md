@@ -53,25 +53,17 @@ project-name/
         |- ...
      |- /elements/                              page elements
         |
-        |- base-page-element.py                 abstract base element
-        |- page-a-elements.py                   page elements
-        |- page-b-elements.py                   
+        |- base.py                              abstract base element
+        |- application.py                       application page elements
+        |- homepage.py                          home page elements                   
         |- ...
      |- /pages/                                 pages for implementing page-object model
         |
-        |- base-page.py                         abstract base page
-        |- /page-a/
-           |
-           |- page-a-country-a.py               example - homepage usa, homepage france
-           |- page-a-country-b.py
-           |- ...
-        |- /page-b/
-           |
-           |- page-b-country-a.py
-           |- page-b-country-b.py
-           |- ...
+        |- base-page.py                         base page object
+        |- application.py                       application page object
+        |- homepage.py                          home page objects
         |- ...
-     |- config.py                               configuration - only works in PROD
+     |- config.py                               configuration - use only on PROD
      |- helpers.py                              general use helper functions
      |- mailbox.py                              custom virtual mailbox class
      |- reporter.py                             custom reporter class
