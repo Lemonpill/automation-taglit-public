@@ -2,7 +2,6 @@ import unittest
 
 from src.cases.signup import (
     us_hp_signup,
-    us_lp_signup,
     ca_hp_signup,
     fr_hp_signup,
     uk_hp_signup,
@@ -12,7 +11,6 @@ from src.cases.signup import (
 )
 from src.cases.login import (
     us_hp_login,
-    us_lp_login,
     ca_hp_login,
     fr_hp_login,
     uk_hp_login,
