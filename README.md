@@ -6,7 +6,7 @@
 3. Run `python main.py` to run tests (select from src/suites.py)
 
 ## Overview
-This performs a set of sanity tests on a number of pages. Tests include performing a valid sign-up and login from home pages of multiple countries (US, AR, SU, FR, DE, UK, AR) and reporting results to ./reports/ folder.
+This performs a set of sanity tests on a number of pages. Tests include performing a valid sign-up and login from home pages of multiple countries (US, CA, SU, FR, DE, UK, AR) and reporting results to ./reports/ folder.
 
 Reports include a CSV with test results and screenshots for each test.
 

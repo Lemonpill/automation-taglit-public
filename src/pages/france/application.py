@@ -1,10 +1,10 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from src.pages.base import BasePage
+from src.pages.base_page import BasePage
 from src.elements.application import ChooseTripButton, TravelSeasonSection
 
 
-class RegistrationFormsSU(BasePage):
+class Application(BasePage):
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
         # ELEMENTS

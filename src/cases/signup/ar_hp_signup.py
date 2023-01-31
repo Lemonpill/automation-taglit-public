@@ -5,8 +5,8 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages.homepage.ar_homepage import HomepageAR
-from src.pages.application.ar_application import RegistrationFormsAR
+from src.pages.argentina.homepage import Homepage
+from src.pages.argentina.application import Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 
@@ -20,7 +20,7 @@ class ARHomeSignupChrome(unittest.TestCase):
     def setUp(self) -> None:
         self.name = "ARHomeSignupChrome"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
-        self.page = HomepageAR(self.driver)
+        self.page = Homepage(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
@@ -251,7 +251,7 @@ class ARHomeSignupChrome(unittest.TestCase):
         self.reporter.write(step_n, step)
 
         # Landing in registration forms
-        reg_forms = RegistrationFormsAR(self.driver)
+        reg_forms = Application(self.driver)
 
         # Verify regforms loaded
         step_n += 1

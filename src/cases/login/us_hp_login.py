@@ -5,8 +5,8 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages.homepage.us_homepage import HomepageUS
-from src.pages.application.us_application import RegistrationFormsUS
+from src.pages.united_states.homepage import Homepage
+from src.pages.united_states.application import Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 from src.helpers import extract_otp, get_email_from_csv, extract_message_text
@@ -21,7 +21,7 @@ class USHomeLoginChrome(unittest.TestCase):
     def setUp(self) -> None:
         self.name = "USHomeLoginChrome"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
-        self.page = HomepageUS(self.driver)
+        self.page = Homepage(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
@@ -183,7 +183,7 @@ class USHomeLoginChrome(unittest.TestCase):
         self.reporter.write(step_n, step, code)
 
         # Landing in registration forms
-        reg_forms = RegistrationFormsUS(self.driver)
+        reg_forms = Application(self.driver)
 
         # Verify regforms loaded
         step_n += 1

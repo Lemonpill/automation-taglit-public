@@ -1,6 +1,6 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from src.pages.base import BasePage
+from src.pages.base_page import BasePage
 from src.config import Config as cfg
 from src.elements.homepage import (
     CookiesAcceptButton,
@@ -9,8 +9,8 @@ from src.elements.homepage import (
     LoginTabButton,
     EmailSignupButton,
     EmailLoginButton,
-    LoginEmailField,
     LoginSubmitButton,
+    LoginEmailField,
     LoginOTPField,
     SignupFirstNameField,
     SignupLastNameField,
@@ -24,24 +24,24 @@ from src.elements.homepage import (
 )
 
 
-class HomepageFR(BasePage):
+class Homepage(BasePage):
     """Class containing actions available
-    on France homepage
+    on Argentina homepage
     """
 
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
         # URL
         if cfg.ENVIRONMENT == "PROD":
-            self.base_url = "http://fr.birthrightisrael.com/"
+            self.base_url = "https://esp.birthrightisrael.com/?country=10"
         else:
-            self.base_url = "http://fr.taglit.info/"
+            self.base_url = "https://esp.taglit.info/?country=10"
 
         # Country
-        self.iso = "FR"
+        self.iso = "AR"
 
         # Title
-        self.title = "Taglit | Un voyage offert en Israël"
+        self.title = "Taglit- Birthright Israel"
 
         # Elements
         self.btn_cookies_cta = CookiesAcceptButton(driver)
