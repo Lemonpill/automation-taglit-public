@@ -1,11 +1,11 @@
+import time
 import unittest
 import logging
 
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages.germany.homepage import Homepage
-from src.pages.germany.application import Application
+from src.pages import GermanyHomepage as Homepage, BaseApplication as Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 
@@ -250,14 +250,14 @@ class DEHomeSignupChrome(unittest.TestCase):
         self.reporter.write(step_n, step)
 
         # Landing in registration forms
-        reg_forms = Application(self.driver)
+        application = Application(self.driver)
 
         # Verify regforms loaded
         step_n += 1
         step = "regforms loaded"
 
         try:
-            reg_forms.verify_page_loaded()
+            application.verify_page_loaded()
         except Exception:
             self.reporter.write(step_n, step, ok=False)
             self.fail(f"failed to {step}")
