@@ -74,7 +74,7 @@ project-name/
      |- config.py                               configuration - only works in PROD
      |- helpers.py                              general use helper functions
      |- mailbox.py                              custom virtual mailbox class
-     |- reporter.py                             custom reported class
+     |- reporter.py                             custom reporter class
      |- suites.py                               here tests are loaded into suites
   |- main.py                                    main file
   |- Pipfile                                    dependencies
