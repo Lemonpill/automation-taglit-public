@@ -5,4 +5,81 @@
 2. Run `pipenv shell` to access the virtual environment
 3. Run `python main.py` to run tests (select from src/suites.py)
 
-Reports (results, screenshots) will be placed in the project root folder, inside 'reports' directory.
+## Overview
+This performs a set of sanity tests on a number of pages. Tests include performing a valid sign-up and login from home pages of multiple countries (US, AR, SU, FR, DE, UK, AR) and reporting results to ./reports/ folder.
+
+Reports include a CSV with test results and screenshots for each test.
+
+This project uses Selenium for working with webdrivers and unittest for organizing and executing tests.
+
+This project implements Page Object Model, in which page methods represent available page actions and can be reused during tests, avoiding (where possible) code replication.
+
+## Structure
+The project is structured in the following way
+
+```
+project-name/
+  |
+  |- /drivers/                                  webdrivers executables
+     |
+     |- chromedriver.exe                        currently only chrome
+     |- ...
+  |- /reports/                                  generated reports files
+     |
+     |- /test-report-1/                         example test report directory
+        |
+        |- /screenshots/                        test screenshots
+           |
+           |- 1-step-screenshot.png
+           |- 2-step-screenshot-fail.png        'fail' mark on failed test steps
+           |- ...
+        |- result.csv                           current test results
+     |- ...
+     |- test-users.csv                          users created during tests
+  |- /src/                                      source code
+     |
+     |- /cases/                                 test cases
+        |
+        |- /signup/                             signup test cases
+           |
+           |- country-a-signup-test.py
+           |- country-b-signup-test.py
+           |- ...
+        |- /login/                              login test cases
+           |
+           |- country-a-login-test.py
+           |- country-b-login-test.py
+           |- ...
+        |- ...
+     |- /elements/                              page elements
+        |
+        |- base-page-element.py                 abstract base element
+        |- page-a-elements.py                   page elements
+        |- page-b-elements.py                   
+        |- ...
+     |- /pages/                                 pages for implementing page-object model
+        |
+        |- base-page.py                         abstract base page
+        |- /page-a/
+           |
+           |- page-a-country-a.py               example - homepage usa, homepage france
+           |- page-a-country-b.py
+           |- ...
+        |- /page-b/
+           |
+           |- page-b-country-a.py
+           |- page-b-country-b.py
+           |- ...
+        |- ...
+     |- config.py                               configuration - only works in PROD
+     |- helpers.py                              general use helper functions
+     |- mailbox.py                              custom virtual mailbox class
+     |- reporter.py                             custom reported class
+     |- suites.py                               here tests are loaded into suites
+  |- main.py                                    main file
+  |- Pipfile                                    dependencies
+  |- Pipfile.lock                               
+  |- README.md
+  |- test.log                                   logger output
+```
+
