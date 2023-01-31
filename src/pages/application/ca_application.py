@@ -9,10 +9,10 @@ class RegistrationFormsCA(BasePage):
         super().__init__(driver)
         # ELEMENTS
         self.btn_choose_trip = ChooseTripButton(self)
-        self.scn_travel_season = TravelSeasonSection(self)
+        self.div_travel_season = TravelSeasonSection(self)
 
     def verify_page_loaded(self):
         try:
-            self.scn_travel_season.locate()
+            self.div_travel_season.locate()
         except Exception:
             raise Exception("failed to verify page loaded")

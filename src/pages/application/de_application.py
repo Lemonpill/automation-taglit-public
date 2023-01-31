@@ -1,7 +1,7 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from src.pages.base import BasePage
-from src.elements.application import ChooseTripButton
+from src.elements.application import ChooseTripButton, TravelSeasonSection
 
 
 class RegistrationFormsDE(BasePage):
@@ -9,9 +9,10 @@ class RegistrationFormsDE(BasePage):
         super().__init__(driver)
         # ELEMENTS
         self.btn_choose_trip = ChooseTripButton(self)
+        self.div_travel_season = TravelSeasonSection(self)
 
     def verify_page_loaded(self):
         try:
-            self.btn_choose_trip.locate()
+            self.div_travel_season.locate()
         except Exception:
             raise Exception("failed to verify page loaded")

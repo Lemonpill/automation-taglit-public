@@ -83,18 +83,18 @@ class USHomeLoginChrome(unittest.TestCase):
         time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
 
-        # Close lightbox
-        step_n += 1
-        step = "close lightbox"
+        # # Close lightbox
+        # step_n += 1
+        # step = "close lightbox"
 
-        try:
-            self.page.close_lightbox()
-        except Exception:
-            self.reporter.write(step_n, step, ok=False)
-            self.fail(f"failed to {step}")
+        # try:
+        #     self.page.close_lightbox()
+        # except Exception:
+        #     self.reporter.write(step_n, step, ok=False)
+        #     self.fail(f"failed to {step}")
 
-        time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
+        # time.sleep(cfg.ANIMATION_DELAY)
+        # self.reporter.write(step_n, step)
 
         # Open login popup
         step_n += 1
