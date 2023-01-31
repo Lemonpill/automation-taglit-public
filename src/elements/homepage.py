@@ -133,8 +133,8 @@ class SignupSubmitButton(BasePageElement):
     """Signup modal 'Submit' button"""
 
     locator = (
-        By.CSS_SELECTOR,
-        "#app > div > div.baseModalWrapper.baseModalPopup > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.userDetailsForm > div.primaryButton.linerStyleButton",
+        By.XPATH,
+        "//*[@id='app']/div/div[1]/div[2]/div[3]/div[1]",
     )
 
 
@@ -142,8 +142,8 @@ class LoginSubmitButton(BasePageElement):
     """Login modal 'NEXT' button"""
 
     locator = (
-        By.CSS_SELECTOR,
-        "#app > div > div.baseModalWrapper.baseModalPopup > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.login.loginWithMailWrapper > div.primaryButton.linerStyleButton",
+        By.XPATH,
+        "//*[@id='app']/div/div[1]/div[2]/div[3]/div",
     )
 
 

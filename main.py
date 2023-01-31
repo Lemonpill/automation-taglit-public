@@ -30,4 +30,4 @@ if __name__ == "__main__":
     )
 
     runner = unittest.runner.TextTestRunner()
-    runner.run(valid_lp_signup_login)
+    runner.run(valid_hp_signup_login)

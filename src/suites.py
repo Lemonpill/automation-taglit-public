@@ -106,7 +106,7 @@ valid_hp_signup_login = unittest.TestSuite(
 # Signup and login from login page
 valid_lp_signup_login = unittest.TestSuite(
     [
-        # valid_us_lp_signup,
+        valid_us_lp_signup,
         valid_us_lp_login,
     ]
 )
