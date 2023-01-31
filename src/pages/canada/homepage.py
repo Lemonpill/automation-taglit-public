@@ -1,6 +1,6 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from src.pages.base import BasePage
+from src.pages.base_page import BasePage
 from src.config import Config as cfg
 from src.elements.homepage import (
     CookiesAcceptButton,
@@ -10,13 +10,14 @@ from src.elements.homepage import (
     EmailSignupButton,
     EmailLoginButton,
     LoginEmailField,
-    LoginOTPField,
     LoginSubmitButton,
+    LoginOTPField,
     SignupFirstNameField,
     SignupLastNameField,
     SignupBirthDateField,
     SignupEmailField,
-    SignupGenderSelection,
+    SignupFamilyRelField,
+    SignupFatherOption,
     SignupPhoneField,
     SignupSubmitButton,
     ScrollDownTermsButton,
@@ -24,21 +25,22 @@ from src.elements.homepage import (
 )
 
 
-class HomepageUK(BasePage):
+class Homepage(BasePage):
     """Class containing actions available
-    on United Kingdom homepage
+    on Canada homepage
     """
 
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
+
         # URL
         if cfg.ENVIRONMENT == "PROD":
-            self.base_url = "https://int.birthrightisrael.com/?country=3"
+            self.base_url = "http://www.birthrightisrael.com/?country=2"
         else:
-            self.base_url = "https://int.taglit.info/?country=3"
+            self.base_url = "http://www.taglit.info/?country=2"
 
         # Country
-        self.iso = "UK"
+        self.iso = "CA"
 
         # Title
         self.title = "A Free Trip to Israel | Taglit - Birthright Israel"
@@ -57,7 +59,8 @@ class HomepageUK(BasePage):
         self.fld_signup_lname = SignupLastNameField(driver)
         self.fld_signup_birth_date = SignupBirthDateField(driver)
         self.fld_signup_email = SignupEmailField(driver)
-        self.fld_signup_gender = SignupGenderSelection(driver)
+        self.fld_family_rel = SignupFamilyRelField(driver)
+        self.rad_family_rel_father = SignupFatherOption(driver)
         self.fld_signup_phone = SignupPhoneField(driver)
         self.btn_signup_button = SignupSubmitButton(driver)
         self.btn_signup_scroll_terms = ScrollDownTermsButton(driver)
@@ -153,11 +156,17 @@ class HomepageUK(BasePage):
         except Exception:
             raise Exception("failed to fill signup email")
 
-    def fill_signup_gender(self, value):
+    def toggle_family_relation(self):
         try:
-            self.fld_signup_gender.select(value)
+            self.fld_family_rel.click()
         except Exception:
-            raise Exception("failed to fill signup gender")
+            raise Exception("failed to toggle family relation")
+
+    def check_family_relation_father(self):
+        try:
+            self.rad_family_rel_father.click()
+        except Exception:
+            raise Exception("failed to check father relation")
 
     def fill_signup_phone(self, value):
         try:

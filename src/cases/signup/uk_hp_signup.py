@@ -5,8 +5,8 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages.homepage.uk_homepage import HomepageUK
-from src.pages.application.uk_application import RegistrationFormsUK
+from src.pages.united_kingdom.homepage import Homepage
+from src.pages.united_kingdom.application import Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 
@@ -20,7 +20,7 @@ class UKHomeSignupChrome(unittest.TestCase):
     def setUp(self) -> None:
         self.name = "UKHomeSignupChrome"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
-        self.page = HomepageUK(self.driver)
+        self.page = Homepage(self.driver)
 
         self.reporter = Reporter(self.driver, self.page.iso, self.name)
 
@@ -251,7 +251,7 @@ class UKHomeSignupChrome(unittest.TestCase):
         self.reporter.write(step_n, step)
 
         # Landing in registration forms
-        reg_forms = RegistrationFormsUK(self.driver)
+        reg_forms = Application(self.driver)
 
         # Verify regforms loaded
         step_n += 1

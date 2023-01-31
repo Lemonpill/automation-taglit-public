@@ -1,22 +1,24 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from src.pages.base import BasePage
+from src.pages.base_page import BasePage
 from src.config import Config as cfg
 from src.elements.homepage import (
     CookiesAcceptButton,
+    CloseLightboxButton,
     NavbarLoginButton,
     SignupTabButton,
     LoginTabButton,
     EmailSignupButton,
     EmailLoginButton,
-    LoginSubmitButton,
     LoginEmailField,
+    LoginSubmitButton,
     LoginOTPField,
     SignupFirstNameField,
     SignupLastNameField,
     SignupBirthDateField,
     SignupEmailField,
-    SignupGenderSelection,
+    SignupFamilyRelField,
+    SignupFatherOption,
     SignupPhoneField,
     SignupSubmitButton,
     ScrollDownTermsButton,
@@ -24,27 +26,29 @@ from src.elements.homepage import (
 )
 
 
-class HomepageAR(BasePage):
+class Homepage(BasePage):
     """Class containing actions available
-    on Argentina homepage
+    on United States homepage
     """
 
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
+
         # URL
         if cfg.ENVIRONMENT == "PROD":
-            self.base_url = "https://esp.birthrightisrael.com/?country=10"
+            self.base_url = "http://www.birthrightisrael.com/"
         else:
-            self.base_url = "https://esp.taglit.info/?country=10"
+            self.base_url = "http://www.taglit.info/"
 
         # Country
-        self.iso = "AR"
+        self.iso = "US"
 
         # Title
-        self.title = "Taglit- Birthright Israel"
+        self.title = "A Free Trip to Israel | Taglit - Birthright Israel"
 
         # Elements
         self.btn_cookies_cta = CookiesAcceptButton(driver)
+        self.btn_close_lightbox = CloseLightboxButton(driver)
         self.btn_navbar_login = NavbarLoginButton(driver)
         self.btn_signup_tab = SignupTabButton(driver)
         self.btn_login_tab = LoginTabButton(driver)
@@ -57,7 +61,8 @@ class HomepageAR(BasePage):
         self.fld_signup_lname = SignupLastNameField(driver)
         self.fld_signup_birth_date = SignupBirthDateField(driver)
         self.fld_signup_email = SignupEmailField(driver)
-        self.fld_signup_gender = SignupGenderSelection(driver)
+        self.fld_family_rel = SignupFamilyRelField(driver)
+        self.rad_family_rel_father = SignupFatherOption(driver)
         self.fld_signup_phone = SignupPhoneField(driver)
         self.btn_signup_button = SignupSubmitButton(driver)
         self.btn_signup_scroll_terms = ScrollDownTermsButton(driver)
@@ -80,6 +85,12 @@ class HomepageAR(BasePage):
             self.btn_cookies_cta.click()
         except Exception:
             raise Exception("failed to click cookies cta")
+
+    def close_lightbox(self):
+        try:
+            self.btn_close_lightbox.click()
+        except Exception:
+            raise Exception("failed to close lightbox")
 
     def open_login_popup(self):
         try:
@@ -153,11 +164,17 @@ class HomepageAR(BasePage):
         except Exception:
             raise Exception("failed to fill signup email")
 
-    def fill_signup_gender(self, value):
+    def toggle_family_relation(self):
         try:
-            self.fld_signup_gender.select(value)
+            self.fld_family_rel.click()
         except Exception:
-            raise Exception("failed to fill signup gender")
+            raise Exception("failed to toggle family relation")
+
+    def check_family_relation_father(self):
+        try:
+            self.rad_family_rel_father.click()
+        except Exception:
+            raise Exception("failed to check father relation")
 
     def fill_signup_phone(self, value):
         try:
