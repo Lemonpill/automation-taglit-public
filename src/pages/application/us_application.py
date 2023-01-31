@@ -8,8 +8,8 @@ class RegistrationFormsUS(BasePage):
     def __init__(self, driver: WebDriver) -> None:
         super().__init__(driver)
         # ELEMENTS
-        self.btn_choose_trip = ChooseTripButton(self)
-        self.div_travel_season = TravelSeasonSection(self)
+        self.btn_choose_trip = ChooseTripButton(driver)
+        self.div_travel_season = TravelSeasonSection(driver)
 
     def verify_page_loaded(self):
         try:

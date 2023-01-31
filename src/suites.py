@@ -40,6 +40,7 @@ valid_de_hp_login = loader.loadTestsFromModule(de_hp_login)
 valid_ar_hp_login = loader.loadTestsFromModule(ar_hp_login)
 
 # Valid signup from homepage test suite
+# * Populates reports/test-users.csv
 valid_hp_signup = unittest.TestSuite(
     [
         valid_us_hp_signup,
@@ -53,6 +54,7 @@ valid_hp_signup = unittest.TestSuite(
 )
 
 # Valid login from homepage test suite
+# * This requires users in reports/test-users.csv
 valid_hp_login = unittest.TestSuite(
     [
         valid_us_hp_login,
@@ -65,7 +67,7 @@ valid_hp_login = unittest.TestSuite(
     ]
 )
 
-# Signup and login from homepage
+# Signup and login from homepage suite
 valid_hp_signup_login = unittest.TestSuite(
     [
         valid_us_hp_signup,
