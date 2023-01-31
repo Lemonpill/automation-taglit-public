@@ -218,7 +218,7 @@ class UnitedKingdomHomepage(BaseHomepage):
     """
     Homepage - United Kingdom
     """
-    
+
     # Page URL
     if cfg.ENVIRONMENT == "PROD":
         base_url = "https://int.birthrightisrael.com/?country=3"
@@ -236,7 +236,7 @@ class RussiaHomepage(BaseHomepage):
     """
     Homepage - Russia
     """
-    
+
     # Page URL
     if cfg.ENVIRONMENT == "PROD":
         base_url = "https://su.birthrightisrael.com"
@@ -254,7 +254,7 @@ class GermanyHomepage(BaseHomepage):
     """
     Homepage - Germany
     """
-    
+
     # Page URL
     if cfg.ENVIRONMENT == "PROD":
         base_url = "https://de.birthrightisrael.com"
@@ -272,7 +272,7 @@ class FranceHomepage(BaseHomepage):
     """
     Homepage - France
     """
-    
+
     # Page URL
     if cfg.ENVIRONMENT == "PROD":
         base_url = "http://fr.birthrightisrael.com/"
@@ -290,7 +290,7 @@ class CanadaHomepage(BaseHomepage):
     """
     Homepage - Canada
     """
-    
+
     # Page URL
     if cfg.ENVIRONMENT == "PROD":
         base_url = "http://www.birthrightisrael.com/?country=2"
@@ -308,7 +308,7 @@ class ArgentinaHomepage(BaseHomepage):
     """
     Homepage - Argentina
     """
-    
+
     # Page URL
     if cfg.ENVIRONMENT == "PROD":
         base_url = "https://esp.birthrightisrael.com/?country=10"

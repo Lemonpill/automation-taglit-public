@@ -19,5 +19,5 @@ __all__ = [
     "GermanyHomepage",
     "FranceHomepage",
     "RussiaHomepage",
-    "BaseApplication"
+    "BaseApplication",
 ]

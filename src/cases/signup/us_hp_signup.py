@@ -5,10 +5,7 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages import (
-    UnitedStatesHomepage as Homepage,
-    BaseApplication as Application
-)
+from src.pages import UnitedStatesHomepage as Homepage, BaseApplication as Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 

@@ -14,5 +14,5 @@ __all__ = [
     "FRHomeSignupChrome",
     "SUHomeSignupChrome",
     "UKHomeSignupChrome",
-    "USHomeSignupChrome"
+    "USHomeSignupChrome",
 ]
