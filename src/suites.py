@@ -24,7 +24,6 @@ loader = unittest.TestLoader()
 
 # Load existing tests
 valid_us_hp_signup = loader.loadTestsFromModule(us_hp_signup)
-valid_us_lp_signup = loader.loadTestsFromModule(us_lp_signup)
 valid_ca_hp_signup = loader.loadTestsFromModule(ca_hp_signup)
 valid_fr_hp_signup = loader.loadTestsFromModule(fr_hp_signup)
 valid_uk_hp_signup = loader.loadTestsFromModule(uk_hp_signup)
@@ -33,7 +32,6 @@ valid_de_hp_signup = loader.loadTestsFromModule(de_hp_signup)
 valid_ar_hp_signup = loader.loadTestsFromModule(ar_hp_signup)
 
 valid_us_hp_login = loader.loadTestsFromModule(us_hp_login)
-valid_us_lp_login = loader.loadTestsFromModule(us_lp_login)
 valid_ca_hp_login = loader.loadTestsFromModule(ca_hp_login)
 valid_fr_hp_login = loader.loadTestsFromModule(fr_hp_login)
 valid_uk_hp_login = loader.loadTestsFromModule(uk_hp_login)
@@ -52,20 +50,6 @@ valid_hp_signup = unittest.TestSuite(
         valid_su_hp_signup,
         valid_de_hp_signup,
         valid_ar_hp_signup,
-    ]
-)
-
-# Valid signup from login page test suite
-valid_lp_signup = unittest.TestSuite(
-    [
-        valid_us_lp_signup,
-    ]
-)
-
-# Valid login from login page test suite
-valid_lp_login = unittest.TestSuite(
-    [
-        valid_us_lp_login,
     ]
 )
 
@@ -100,13 +84,5 @@ valid_hp_signup_login = unittest.TestSuite(
         valid_de_hp_login,
         valid_ar_hp_signup,
         valid_ar_hp_login,
-    ]
-)
-
-# Signup and login from login page
-valid_lp_signup_login = unittest.TestSuite(
-    [
-        valid_us_lp_signup,
-        valid_us_lp_login,
     ]
 )
