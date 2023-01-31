@@ -133,8 +133,8 @@ class SignupSubmitButton(BasePageElement):
     """Signup modal 'Submit' button"""
 
     locator = (
-        By.XPATH,
-        "//*[@id='app']/div/div[1]/div[2]/div[3]/div[1]",
+        By.CSS_SELECTOR,
+        "#app > div.popupsContainer > div.baseModalWrapper.baseModalPopup > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.userDetailsForm > div",
     )
 
 
@@ -142,8 +142,8 @@ class LoginSubmitButton(BasePageElement):
     """Login modal 'NEXT' button"""
 
     locator = (
-        By.XPATH,
-        "//*[@id='app']/div/div[1]/div[2]/div[3]/div",
+        By.CSS_SELECTOR,
+        "#app > div.popupsContainer > div.baseModalWrapper.baseModalPopup > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.login.loginWithMailWrapper > div",
     )
 
 
@@ -152,7 +152,7 @@ class ScrollDownTermsButton(BasePageElement):
 
     locator = (
         By.CSS_SELECTOR,
-        "#app > div > div.baseModalWrapper.baseModalPopup.scrollMode > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.privacyAndTerms > div.scrollerDownWrapper > div",
+        "#app > div.popupsContainer > div.baseModalWrapper.baseModalPopup.scrollMode > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.privacyAndTerms > div.scrollerDownWrapper > div",
     )
 
 
@@ -161,5 +161,5 @@ class AcceptTermsButton(BasePageElement):
 
     locator = (
         By.CSS_SELECTOR,
-        "#app > div > div.baseModalWrapper.baseModalPopup.scrollMode > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.privacyAndTerms > div.footerActions > div",
+        "#app > div.popupsContainer > div.baseModalWrapper.baseModalPopup.scrollMode > div.authPanel.dynamicPanelsWrapper > div.contentContainerNew.privacyAndTerms > div.footerActions > div",
     )

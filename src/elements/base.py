@@ -9,12 +9,12 @@ class BasePageElement(object):
     for page elements (fill, click, etc.)
     """
 
-    def __init__(self, page) -> None:
-        self.page = page
+    def __init__(self, driver) -> None:
+        self.driver = driver
 
     def locate(self):
         try:
-            el = WebDriverWait(self.page.driver, cfg.LOCATE_TIMEOUT).until(
+            el = WebDriverWait(self.driver, cfg.LOCATE_TIMEOUT).until(
                 EC.visibility_of_element_located(self.locator)
             )
         except Exception:

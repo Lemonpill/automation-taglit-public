@@ -12,8 +12,7 @@ from src.suites import (
 
 """
 TODO:
-    1. Add more logging
-    2. Add webdriver folder in root
+    1. Improve logging
 """
 
 
