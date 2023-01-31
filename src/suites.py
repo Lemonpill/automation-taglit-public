@@ -1,43 +1,26 @@
 import unittest
 
-from src.cases.signup import (
-    us_hp_signup,
-    ca_hp_signup,
-    fr_hp_signup,
-    uk_hp_signup,
-    su_hp_signup,
-    de_hp_signup,
-    ar_hp_signup,
-)
-from src.cases.login import (
-    us_hp_login,
-    ca_hp_login,
-    fr_hp_login,
-    uk_hp_login,
-    su_hp_login,
-    de_hp_login,
-    ar_hp_login,
-)
+from src.cases import *
 
 
 loader = unittest.TestLoader()
 
 # Load existing tests
-valid_us_hp_signup = loader.loadTestsFromModule(us_hp_signup)
-valid_ca_hp_signup = loader.loadTestsFromModule(ca_hp_signup)
-valid_fr_hp_signup = loader.loadTestsFromModule(fr_hp_signup)
-valid_uk_hp_signup = loader.loadTestsFromModule(uk_hp_signup)
-valid_su_hp_signup = loader.loadTestsFromModule(su_hp_signup)
-valid_de_hp_signup = loader.loadTestsFromModule(de_hp_signup)
-valid_ar_hp_signup = loader.loadTestsFromModule(ar_hp_signup)
+valid_us_hp_signup = loader.loadTestsFromTestCase(USHomeSignupChrome)
+valid_ca_hp_signup = loader.loadTestsFromTestCase(CAHomeSignupChrome)
+valid_fr_hp_signup = loader.loadTestsFromTestCase(FRHomeSignupChrome)
+valid_uk_hp_signup = loader.loadTestsFromTestCase(UKHomeSignupChrome)
+valid_su_hp_signup = loader.loadTestsFromTestCase(SUHomeSignupChrome)
+valid_de_hp_signup = loader.loadTestsFromTestCase(USHomeSignupChrome)
+valid_ar_hp_signup = loader.loadTestsFromTestCase(ARHomeSignupChrome)
 
-valid_us_hp_login = loader.loadTestsFromModule(us_hp_login)
-valid_ca_hp_login = loader.loadTestsFromModule(ca_hp_login)
-valid_fr_hp_login = loader.loadTestsFromModule(fr_hp_login)
-valid_uk_hp_login = loader.loadTestsFromModule(uk_hp_login)
-valid_su_hp_login = loader.loadTestsFromModule(su_hp_login)
-valid_de_hp_login = loader.loadTestsFromModule(de_hp_login)
-valid_ar_hp_login = loader.loadTestsFromModule(ar_hp_login)
+valid_us_hp_login = loader.loadTestsFromTestCase(USHomeLoginChrome)
+valid_ca_hp_login = loader.loadTestsFromTestCase(CAHomeLoginChrome)
+valid_fr_hp_login = loader.loadTestsFromTestCase(FRHomeLoginChrome)
+valid_uk_hp_login = loader.loadTestsFromTestCase(UKHomeLoginChrome)
+valid_su_hp_login = loader.loadTestsFromTestCase(SUHomeLoginChrome)
+valid_de_hp_login = loader.loadTestsFromTestCase(USHomeLoginChrome)
+valid_ar_hp_login = loader.loadTestsFromTestCase(ARHomeLoginChrome)
 
 # Valid signup from homepage test suite
 # * Populates reports/test-users.csv
