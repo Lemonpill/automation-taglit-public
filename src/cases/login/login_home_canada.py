@@ -5,7 +5,7 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages import FranceHomepage as Homepage, BaseApplication as Application
+from src.pages import CanadaHomepage as Homepage, BaseApplication as Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 from src.helpers import extract_otp, get_email_from_csv, extract_message_text
@@ -14,11 +14,11 @@ from src.helpers import extract_otp, get_email_from_csv, extract_message_text
 logger = logging.getLogger(__name__)
 
 
-class FRHomeLoginChrome(unittest.TestCase):
-    """France - Homepage - Login with valid email (Chrome)"""
+class LoginHomepageCanada(unittest.TestCase):
+    """Canada - Homepage - Login with valid email (Chrome)"""
 
     def setUp(self) -> None:
-        self.name = "FRHomeLoginChrome"
+        self.name = "LoginHomepageCanada"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = Homepage(self.driver)
 

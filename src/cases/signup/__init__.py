@@ -1,18 +1,18 @@
-from .ar_hp_signup import ARHomeSignupChrome  # noqa
-from .ca_hp_signup import CAHomeSignupChrome  # noqa
-from .de_hp_signup import DEHomeSignupChrome  # noqa
-from .fr_hp_signup import FRHomeSignupChrome  # noqa
-from .su_hp_signup import SUHomeSignupChrome  # noqa
-from .uk_hp_signup import UKHomeSignupChrome  # noqa
-from .us_hp_signup import USHomeSignupChrome  # noqa
+from .signup_home_argentina import SignupHomepageArgentina  # noqa
+from .signup_home_canada import SignupHomepageCanada  # noqa
+from .signup_home_germany import SignupHomepageGermany  # noqa
+from .signup_home_france import SignupHomepageFrance  # noqa
+from .signup_home_russia import SignupHomepageRussia  # noqa
+from .signup_home_united_kingdom import SignupHomepageUnitedKingdom  # noqa
+from .signup_home_united_states import SignupHomepageUnitedStates  # noqa
 
 
 __all__ = [
-    "ARHomeSignupChrome",
-    "CAHomeSignupChrome",
-    "DEHomeSignupChrome",
-    "FRHomeSignupChrome",
-    "SUHomeSignupChrome",
-    "UKHomeSignupChrome",
-    "USHomeSignupChrome",
+    "SignupHomepageArgentina",
+    "SignupHomepageCanada",
+    "SignupHomepageGermany",
+    "SignupHomepageFrance",
+    "SignupHomepageRussia",
+    "SignupHomepageUnitedKingdom",
+    "SignupHomepageUnitedStates",
 ]

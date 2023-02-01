@@ -5,7 +5,7 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages import GermanyHomepage as Homepage, BaseApplication as Application
+from src.pages import ArgentinaHomepage as Homepage, BaseApplication as Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 
@@ -13,11 +13,11 @@ from src.mailbox import Mailbox
 logger = logging.getLogger(__name__)
 
 
-class DEHomeSignupChrome(unittest.TestCase):
-    """Germany - Homepage - Signup with valid details (Chrome)"""
+class SignupHomepageArgentina(unittest.TestCase):
+    """Argentina - Homepage - Signup with valid details (Chrome)"""
 
     def setUp(self) -> None:
-        self.name = "DEHomeSignupChrome"
+        self.name = "SignupHomepageArgentina"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = Homepage(self.driver)
 
@@ -184,7 +184,7 @@ class DEHomeSignupChrome(unittest.TestCase):
         step_n += 1
         step = "fill gender"
 
-        gender = "Männlich"
+        gender = "Masculino"
 
         try:
             self.page.fill_signup_gender(gender)
@@ -254,7 +254,7 @@ class DEHomeSignupChrome(unittest.TestCase):
 
         # Verify regforms loaded
         step_n += 1
-        step = "regforms loaded"
+        step = "verify regforms loaded"
 
         try:
             application.verify_page_loaded()

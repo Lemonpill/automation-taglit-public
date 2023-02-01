@@ -5,7 +5,7 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages import UnitedKingdomHomepage as Homepage, BaseApplication as Application
+from src.pages import FranceHomepage as Homepage, BaseApplication as Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 
@@ -13,11 +13,11 @@ from src.mailbox import Mailbox
 logger = logging.getLogger(__name__)
 
 
-class UKHomeSignupChrome(unittest.TestCase):
-    """United Kingdom - Homepage - Signup with valid details (Chrome)"""
+class SignupHomepageFrance(unittest.TestCase):
+    """France - Homepage - Signup with valid details (Chrome)"""
 
     def setUp(self) -> None:
-        self.name = "UKHomeSignupChrome"
+        self.name = "SignupHomepageFrance"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = Homepage(self.driver)
 
@@ -115,7 +115,7 @@ class UKHomeSignupChrome(unittest.TestCase):
         fname = "QA"
 
         try:
-            self.page.fill_signup_first_name(fname)
+            self.page.fill_signup_first_name("Qa")
         except Exception:
             self.reporter.write(step_n, step, fname, ok=False)
             self.fail(f"failed to {step}")
@@ -184,7 +184,7 @@ class UKHomeSignupChrome(unittest.TestCase):
         step_n += 1
         step = "fill gender"
 
-        gender = "Male"
+        gender = "Masculin"
 
         try:
             self.page.fill_signup_gender(gender)

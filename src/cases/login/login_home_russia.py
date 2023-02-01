@@ -14,11 +14,11 @@ from src.helpers import extract_otp, get_email_from_csv, extract_message_text
 logger = logging.getLogger(__name__)
 
 
-class SUHomeLoginChrome(unittest.TestCase):
+class LoginHomepageRussia(unittest.TestCase):
     """Russia - Homepage - Login with valid email (Chrome)"""
 
     def setUp(self) -> None:
-        self.name = "SUHomeLoginChrome"
+        self.name = "LoginHomepageRussia"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = Homepage(self.driver)
 

@@ -6,21 +6,21 @@ from src.cases import *
 loader = unittest.TestLoader()
 
 # Load existing tests
-valid_us_hp_signup = loader.loadTestsFromTestCase(USHomeSignupChrome)
-valid_ca_hp_signup = loader.loadTestsFromTestCase(CAHomeSignupChrome)
-valid_fr_hp_signup = loader.loadTestsFromTestCase(FRHomeSignupChrome)
-valid_uk_hp_signup = loader.loadTestsFromTestCase(UKHomeSignupChrome)
-valid_su_hp_signup = loader.loadTestsFromTestCase(SUHomeSignupChrome)
-valid_de_hp_signup = loader.loadTestsFromTestCase(USHomeSignupChrome)
-valid_ar_hp_signup = loader.loadTestsFromTestCase(ARHomeSignupChrome)
+valid_us_hp_signup = loader.loadTestsFromTestCase(SignupHomepageUnitedStates)
+valid_ca_hp_signup = loader.loadTestsFromTestCase(SignupHomepageCanada)
+valid_fr_hp_signup = loader.loadTestsFromTestCase(SignupHomepageFrance)
+valid_uk_hp_signup = loader.loadTestsFromTestCase(SignupHomepageUnitedKingdom)
+valid_su_hp_signup = loader.loadTestsFromTestCase(SignupHomepageRussia)
+valid_de_hp_signup = loader.loadTestsFromTestCase(SignupHomepageGermany)
+valid_ar_hp_signup = loader.loadTestsFromTestCase(SignupHomepageArgentina)
 
-valid_us_hp_login = loader.loadTestsFromTestCase(USHomeLoginChrome)
-valid_ca_hp_login = loader.loadTestsFromTestCase(CAHomeLoginChrome)
-valid_fr_hp_login = loader.loadTestsFromTestCase(FRHomeLoginChrome)
-valid_uk_hp_login = loader.loadTestsFromTestCase(UKHomeLoginChrome)
-valid_su_hp_login = loader.loadTestsFromTestCase(SUHomeLoginChrome)
-valid_de_hp_login = loader.loadTestsFromTestCase(USHomeLoginChrome)
-valid_ar_hp_login = loader.loadTestsFromTestCase(ARHomeLoginChrome)
+valid_us_hp_login = loader.loadTestsFromTestCase(LoginHomepageUnitedStates)
+valid_ca_hp_login = loader.loadTestsFromTestCase(LoginHomepageCanada)
+valid_fr_hp_login = loader.loadTestsFromTestCase(LoginHomepageFrance)
+valid_uk_hp_login = loader.loadTestsFromTestCase(LoginHomepageUnitedKingdom)
+valid_su_hp_login = loader.loadTestsFromTestCase(LoginHomepageRussia)
+valid_de_hp_login = loader.loadTestsFromTestCase(LoginHomepageGermany)
+valid_ar_hp_login = loader.loadTestsFromTestCase(LoginHomepageArgentina)
 
 # Valid signup from homepage test suite
 # * Populates reports/test-users.csv

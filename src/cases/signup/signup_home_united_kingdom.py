@@ -5,7 +5,7 @@ import logging
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 from src.config import Config as cfg
-from src.pages import UnitedStatesHomepage as Homepage, BaseApplication as Application
+from src.pages import UnitedKingdomHomepage as Homepage, BaseApplication as Application
 from src.reporter import Reporter
 from src.mailbox import Mailbox
 
@@ -13,11 +13,11 @@ from src.mailbox import Mailbox
 logger = logging.getLogger(__name__)
 
 
-class USHomeSignupChrome(unittest.TestCase):
-    """United States - Homepage - Signup with valid details (Chrome)"""
+class SignupHomepageUnitedKingdom(unittest.TestCase):
+    """United Kingdom - Homepage - Signup with valid details (Chrome)"""
 
     def setUp(self) -> None:
-        self.name = "USHomeSignupChrome"
+        self.name = "SignupHomepageUnitedKingdom"
         self.driver = WebDriver(cfg.CHROMEDRIVER_PATH)
         self.page = Homepage(self.driver)
 
@@ -68,19 +68,6 @@ class USHomeSignupChrome(unittest.TestCase):
 
         time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step)
-
-        # # Close lightbox
-        # step_n += 1
-        # step = "close lightbox"
-
-        # try:
-        #     self.page.close_lightbox()
-        # except Exception:
-        #     self.reporter.write(step_n, step, ok=False)
-        #     self.fail(f"failed to {step}")
-
-        # time.sleep(cfg.ANIMATION_DELAY)
-        # self.reporter.write(step_n, step)
 
         # Open login popup
         step_n += 1
@@ -176,7 +163,6 @@ class USHomeSignupChrome(unittest.TestCase):
             self.reporter.save_step(step_n, step, ok=False)
             self.fail(f"failed to {step}")
 
-        time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.save_step(step_n, step, mailbox.email)
 
         # Fill in valid email
@@ -194,44 +180,20 @@ class USHomeSignupChrome(unittest.TestCase):
         time.sleep(cfg.ANIMATION_DELAY)
         self.reporter.write(step_n, step, email)
 
-        # Open family relation dropdown
+        # Fill in gender
         step_n += 1
-        step = "open family relation"
+        step = "fill gender"
+
+        gender = "Male"
 
         try:
-            self.page.toggle_family_relation()
+            self.page.fill_signup_gender(gender)
         except Exception:
-            self.reporter.write(step_n, step, ok=False)
+            self.reporter.write(step_n, step, gender, ok=False)
             self.fail(f"failed to {step}")
 
         time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
-
-        # Check father relation
-        step_n += 1
-        step = "check father relation"
-
-        try:
-            self.page.check_family_relation_father()
-        except Exception:
-            self.reporter.write(step_n, step, ok=False)
-            self.fail(f"failed to {step}")
-
-        time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
-
-        # Close family relation dropdown
-        step_n += 1
-        step = "close family relation"
-
-        try:
-            self.page.toggle_family_relation()
-        except Exception:
-            self.reporter.write(step_n, step, ok=False)
-            self.fail(f"failed to {step}")
-
-        time.sleep(cfg.ANIMATION_DELAY)
-        self.reporter.write(step_n, step)
+        self.reporter.write(step_n, step, gender)
 
         # Fill in valid phone
         step_n += 1
