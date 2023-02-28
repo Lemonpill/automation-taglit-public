@@ -12,4 +12,4 @@ class ChooseTripButton(BasePageElement):
 class TravelSeasonSection(BasePageElement):
     """Registration forms 'Travel season' section"""
 
-    locator = (By.CSS_SELECTOR, "div[data-v-d2458ac2]")
+    locator = (By.CSS_SELECTOR, "#FORM-GetStarted")
